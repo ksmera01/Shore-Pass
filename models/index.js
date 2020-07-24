@@ -1,4 +1,4 @@
 module.exports = {
-  Transaction: require("./transaction"),
-  Tag: require("./tag")
+  User: require("./User"),
+  Tag: require("./Tag")
 };

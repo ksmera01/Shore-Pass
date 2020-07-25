@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import API from '../utils/API'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -60,6 +61,31 @@ const useStyles = makeStyles((theme) => ({
 function SignInSide() {
     const classes = useStyles();
 
+
+    // submitting form function
+    const [login, setLogin] = useState({})
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setLogin({ ...login, [name]: value })
+    };
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (login.email && login.password) {
+            console.log(login)
+            API.login(login)
+                .then(res => {
+                    console.log(res)
+                    window.location.href = '/dashboard'
+                })
+                .catch(err => console.log(err));
+        }
+
+    };
+
+
+
     return (
         <Grid container component="main" className={classes.root}>
             <CssBaseline />
@@ -83,6 +109,7 @@ function SignInSide() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            onChange={handleInputChange}
                         />
                         <TextField
                             variant="outlined"
@@ -94,6 +121,7 @@ function SignInSide() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            onChange={handleInputChange}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -105,6 +133,7 @@ function SignInSide() {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={(e) => handleFormSubmit(e)}
                         >
                             Sign In
             </Button>

@@ -22,17 +22,15 @@ userSchema.methods = {
   }
 }
 
-// Define hooks for pre-saving
 userSchema.pre('save', function (next) {
   if (!this.password) {
     next()
   } else {
-    console.log('PASSWORD HASHED SUCCESSFULLY')
     this.password = this.hashPassword(this.password)
+    console.log('PASSWORD HASHED SUCCESSFULLY')
     next()
   }
 })
-
 
 const User = mongoose.model("User", userSchema);
 

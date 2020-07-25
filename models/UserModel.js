@@ -1,14 +1,13 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Tags = require('./Tag')
 
 const userSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // tags: [Tags],
+  tags: Array,
   createdAt: { type: Date, default: Date.now, required: true },
 });
 

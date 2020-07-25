@@ -1,4 +1,4 @@
 module.exports = {
-  User: require("./User"),
-  Tag: require("./Tag")
+  User: require("./UserModel"),
+  Tag: require("./TagModel")
 };

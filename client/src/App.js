@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
-import SignInSide from './pages/SignIn';
+import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard'
 
@@ -14,22 +14,21 @@ function App() {
           <Route exact path="/">
             <Dashboard />
           </Route>
-          <Route exact path="/transaction">
+          <Route path="/transaction">
             {/* <Dashboard /> */}
           </Route>
-          <Route exact path="/pricing">
+          <Route path="/pricing">
             {/* <Dashboard /> */}
           </Route>
-          <Route>
-            <Dashboard path="/dashboard" />
+          <Route path="/dashboard" >
+            <Dashboard />
           </Route>
-          <Route exact path="/login">
-            <SignInSide />
+          <Route path="/login">
+            <SignIn />
           </Route>
-          <Route exact path="/sign-up">
+          <Route path="/sign-up">
             <SignUp />
           </Route>
-
         </Switch>
       </div>
     </Router>

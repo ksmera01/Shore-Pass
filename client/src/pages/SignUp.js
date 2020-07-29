@@ -13,19 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import API from '../utils/API'
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Shore Pass
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from '../components/Copyright'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -69,7 +57,6 @@ export default function SignUp() {
                 })
                 .catch(err => console.log(err));
         }
-
     };
 
     return (

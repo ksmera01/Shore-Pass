@@ -11,15 +11,25 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path={["/", "/login"]}>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route exact path="/transaction">
+            {/* <Dashboard /> */}
+          </Route>
+          <Route exact path="/pricing">
+            {/* <Dashboard /> */}
+          </Route>
+          <Route>
+            <Dashboard path="/dashboard" />
+          </Route>
+          <Route exact path="/login">
             <SignInSide />
           </Route>
           <Route exact path="/sign-up">
             <SignUp />
           </Route>
-          <Route>
-            <Dashboard path="/dashboard" />
-          </Route>
+
         </Switch>
       </div>
     </Router>

@@ -5,13 +5,13 @@ const tagSchema = new Schema({
     // Do you need a specific ID key?}
     QR: { type: String, required: true },
     type: { type: String, required: true },
+    name: { type: String, required: true },
     price: { type: Number, required: true },
     startDate: { type: Date, default: Date.now },
     expirationDate: { type: Date, default: Date.now },
-    location: String,
+    location: { type: String, required: true },
     paid: { type: Boolean, default: false },
-    //set user id from front end
-    // user_id: 
+    checkedin: { type: Boolean, default: false },
 });
 
 const Tag = mongoose.model("Tag", tagSchema);

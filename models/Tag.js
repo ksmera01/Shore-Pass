@@ -9,7 +9,9 @@ const tagSchema = new Schema({
     startDate: { type: Date, default: Date.now },
     expirationDate: { type: Date, default: Date.now },
     location: String,
-    paid: { type: Boolean, default: false }
+    paid: { type: Boolean, default: false },
+    //set user id from front end
+    // user_id: 
 });
 
 const Tag = mongoose.model("Tag", tagSchema);

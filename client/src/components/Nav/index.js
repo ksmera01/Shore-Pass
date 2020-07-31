@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,11 +6,9 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import API from '../../utils/API'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,66 +24,88 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar() {
   const classes = useStyles();
+
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };
+  // This async function is called within useEffect to check if there is a current user or not
+  const checkAuth = async () => {
+    let bool = await (JSON.parse(localStorage.getItem('user_id_SP')) ? true : false)
+    setAuth(bool)
+  }
+  useEffect(() => {
+    checkAuth()
+  })
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (url) => {
     setAnchorEl(null);
+    window.location.href = url
   };
+
+  const logoutUser = async () => {
+    // e.preventDefault();
+    await localStorage.removeItem('user_id_SP')
+    API.logout(res => {
+      console.log(res)
+    })
+    window.location.href = '/';
+  }
 
   return (
     <div className={classes.root}>
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            Photos
+            Shore Pass
           </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-              </Menu>
-            </div>
-          )}
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+
+              <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>
+              {!auth && (
+                <div>
+                  <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>
+                  <MenuItem onClick={() => handleClose('/sign-up')}>Sign Up</MenuItem>
+                </div>
+              )}
+              {auth && (
+                <div>
+                  <MenuItem onClick={() => handleClose('/dashboard')}>My Tags</MenuItem>
+                  <MenuItem onClick={() => handleClose('/account')}>Account</MenuItem>
+                  <MenuItem onClick={() => logoutUser()}>Logout</MenuItem>
+                </div>
+              )}
+            </Menu>
+          </div>
+
         </Toolbar>
       </AppBar>
     </div>

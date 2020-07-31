@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import API from '../utils/API'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -14,6 +14,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright'
+import { UserContext } from '../context/UserContext'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -57,17 +58,21 @@ function SignIn() {
         setLogin({ ...login, [name]: value })
     };
 
-    function handleFormSubmit(event) {
+    // PIPING FOR CONTEXT.. FOR FUTURE USE
+    // const { user, setUser } = useContext(UserContext)
+
+    async function handleFormSubmit(event) {
         event.preventDefault();
         if (login.email && login.password) {
-            API.login(login)
+            await API.login(login)
                 .then(res => {
                     console.log(res)
                     localStorage.setItem("user_id_SP", JSON.stringify(res.data._id));
+                    // setUser(res.data)
                 })
-                // .then(window.location.href = '/dashboard')
                 .catch(err => console.log(err));
         }
+        window.location.href = '/dashboard'
     };
 
 

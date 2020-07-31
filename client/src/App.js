@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard'
+import Transaction from './pages/Transaction'
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
             <Dashboard />
           </Route>
           <Route path="/transaction">
-            {/* <Dashboard /> */}
+            <Transaction />
           </Route>
           <Route path="/pricing">
             {/* <Dashboard /> */}

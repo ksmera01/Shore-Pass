@@ -10,13 +10,17 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // authenticate: function (req,res){
-  //   passport.authenticate("local")
-  // },
   findById: function (req, res) {
+    console.log(req.params.id)
     db.User
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(user => res.json({
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        tags: user.tags
+      }))
       .catch(err => res.status(422).json(err));
   },
   // For Signing up a new User

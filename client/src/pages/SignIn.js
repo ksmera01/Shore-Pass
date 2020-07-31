@@ -49,7 +49,6 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
-
     // submitting form function
     const [login, setLogin] = useState({})
 
@@ -61,15 +60,14 @@ function SignIn() {
     function handleFormSubmit(event) {
         event.preventDefault();
         if (login.email && login.password) {
-            console.log(login)
             API.login(login)
                 .then(res => {
                     console.log(res)
-                    window.location.href = '/dashboard'
+                    localStorage.setItem("user_id_SP", JSON.stringify(res.data._id));
                 })
+                // .then(window.location.href = '/dashboard')
                 .catch(err => console.log(err));
         }
-
     };
 
 

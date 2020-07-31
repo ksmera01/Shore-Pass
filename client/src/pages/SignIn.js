@@ -1,5 +1,5 @@
-
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import API from '../utils/API'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -13,19 +13,7 @@ import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                ShorePass
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+import Copyright from '../components/Copyright'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -58,8 +46,33 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function SignInSide() {
+function SignIn() {
     const classes = useStyles();
+
+
+    // submitting form function
+    const [login, setLogin] = useState({})
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setLogin({ ...login, [name]: value })
+    };
+
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        if (login.email && login.password) {
+            console.log(login)
+            API.login(login)
+                .then(res => {
+                    console.log(res)
+                    window.location.href = '/dashboard'
+                })
+                .catch(err => console.log(err));
+        }
+
+    };
+
+
 
     return (
         <Grid container component="main" className={classes.root}>
@@ -84,6 +97,7 @@ function SignInSide() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            onChange={handleInputChange}
                         />
                         <TextField
                             variant="outlined"
@@ -95,6 +109,7 @@ function SignInSide() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            onChange={handleInputChange}
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
@@ -106,12 +121,13 @@ function SignInSide() {
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick={(e) => handleFormSubmit(e)}
                         >
                             Sign In
             </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="#" variant="body2">
+                                <Link href="/Dashboard" variant="body2">
                                     Forgot password?
                 </Link>
                             </Grid>
@@ -131,4 +147,4 @@ function SignInSide() {
     );
 }
 
-export default SignInSide;
+export default SignIn;

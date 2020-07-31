@@ -4,10 +4,11 @@ const User = require('../models/User')
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy({
-  usernameField: 'email' // not necessary, DEFAULT
+  usernameField: 'email', // not necessary, DEFAULT
+  // passwordField: 'password' //May not need this at all
 },
   function (email, password, done) {
-    User.findOne({ email: email }, (err, user) => {
+    User.findOne({ email }, (err, user) => {
       if (err) {
         return done(err)
       }

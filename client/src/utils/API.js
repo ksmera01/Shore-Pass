@@ -5,7 +5,6 @@ export default {
     //   getBooks: function() {
     //     return axios.get("/api/books");
     //   },
-    // Gets the book with the given id
     findUserId: function (id) {
         return axios.get("/api/user/" + id);
     },
@@ -13,7 +12,6 @@ export default {
     //   deleteBook: function(id) {
     //     return axios.delete("/api/books/" + id);
     //   },
-    // Saves a book to the database
     createNewUser: function (userData) {
         return axios.post("/api/user/sign-up", userData);
     },
@@ -21,6 +19,6 @@ export default {
         return axios.post("/api/user/login", userData);
     },
     logout: function () {
-        return axios.get("/api/user/logout");
+        axios.get("/api/user/logout", (req, res) => console.log(res));
     }
 };

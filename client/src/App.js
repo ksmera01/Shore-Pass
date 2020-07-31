@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
+import Pricing from './pages/Pricing';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Dashboard from './pages/Dashboard';
-import Pricing from './pages/Pricing'
+import Dashboard from './pages/Dashboard'
+import Transaction from './pages/Transaction'
 
 function App() {
   return (
@@ -15,13 +16,13 @@ function App() {
           <Route exact path="/">
             <Dashboard />
           </Route>
-          <Route path="/transaction">
-            {/* <Dashboard /> */}
-          </Route>
-          <Route path="/pricing">
+          <Route exact path="/pricing">
             <Pricing />
           </Route>
-          <Route path="/dashboard" >
+           <Route path="/transaction">
+            <Transaction />
+          </Route>
+           <Route path="/dashboard" >
             <Dashboard />
           </Route>
           <Route path="/login">
@@ -29,6 +30,7 @@ function App() {
           </Route>
           <Route path="/sign-up">
             <SignUp />
+
           </Route>
         </Switch>
       </div>

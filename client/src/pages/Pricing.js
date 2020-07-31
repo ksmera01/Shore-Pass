@@ -1,5 +1,4 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,14 +6,25 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import StarIcon from '@material-ui/icons/StarBorder';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
-import Copyright from '../components/Copyright'
+import Location from '../components/Location';
+
+function Copyright() {
+    return (
+        <Typography variant="body2" color="textSecondary" align="center">
+            {'Copyright © '}
+            <Link color="inherit" href="https://material-ui.com/">
+                Shore Pass
+      </Link>{' '}
+            {new Date().getFullYear()}
+            {'.'}
+        </Typography>
+    );
+}
 
 
 const useStyles = makeStyles((theme) => ({
@@ -25,15 +35,8 @@ const useStyles = makeStyles((theme) => ({
             listStyle: 'none',
         },
     },
-    appBar: {
-        borderBottom: `1px solid ${theme.palette.divider}`,
-    },
-    toolbar: {
-        flexWrap: 'wrap',
-    },
-    toolbarTitle: {
-        flexGrow: 1,
-    },
+
+
     link: {
         margin: theme.spacing(1, 1.5),
     },
@@ -64,28 +67,24 @@ const useStyles = makeStyles((theme) => ({
 
 const tiers = [
     {
-        title: 'Day Pass',
+        title: 'Day',
         price: '5',
-        type: '/day',
-        description: 'Valid for Day of Purchase',
-        buttonText: 'Purchase Day Tag',
+        description: ['Valid for Day of Purchase'],
+        buttonText: 'Select Day Tag',
         buttonVariant: 'outlined',
     },
     {
         title: 'Weekly',
         price: '10',
-        description: 'Valid Saturday to Saturday',
-        buttonText: 'Purchase Weekly Tag',
-        buttonVariant: 'contained',
+        description: ['Valid for Week of Purchase'],
+        buttonText: 'Select Weekly Tag',
+        buttonVariant: 'outlined',
     },
     {
-        title: 'Season',
-        price: '15',
-        description: [
-            'Valid for Season of Purchase',
-            'Tag is for Selected Beach Only',
-        ],
-        buttonText: 'Purchase Seasonal Tag',
+        title: 'Seasonal',
+        price: '25',
+        description: ['Valid for Season of Purchase'],
+        buttonText: 'Select Seasonal Tag',
         buttonVariant: 'outlined',
     },
 ];
@@ -111,40 +110,55 @@ const footers = [
 export default function Pricing() {
     const classes = useStyles();
 
+    // Setting our component's initial state
+    //     const [pricing, sendPricing] = useState([])
+    //     const [locationObject, setLocationObject] = useState({})
+    //     const [tagObject, setTagObject] = useState({})
+
+
+    //     // Handles updating component state when the user types selected in the input field
+    //     function handleInputChange(event) {
+    //         const { name, value } = event.target;
+    //         setLocationObject({ ...locationObject, [beach]: value })
+    //         setTagObject({ ...TagObject, [tagType]: value })
+    //         console.log({ formObject })
+    //     };
+
+    //     // When the form is submitted, use the API.saveBook method to save the book data
+    //     // Then reload books from the database
+    //     function handleFormSubmit(event) {
+    //         event.preventDefault();
+    //         if (formLocationObject.beach && formTagObject) {
+    //             console.log(formLocationObject.beach)
+    //             console.log(formTagObject.tagType)
+    //             //NEED TO FIX
+    //             Transaction.sendPricing(formObject.title).then(res => { setBooks(res.items) })
+    //                 .then(setFormObject())
+    //                 .catch(err => console.log(err));
+    //         }
+    //     };
+    // // 
+
+
     return (
         <React.Fragment>
             <CssBaseline />
-            <AppBar position="static" color="default" elevation={0} className={classes.appBar}>
-                <Toolbar className={classes.toolbar}>
-                    <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
-                        Hi, ______name of user???
-          </Typography>
-                    <nav>
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Home Page
-            </Link>
-                        {/* <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Enterprise
-            </Link>
-                        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-                            Support
-            </Link> */}
-                    </nav>
-                    <Button href="#" color="primary" variant="outlined" className={classes.link}>
-                        Login
-          </Button>
-                </Toolbar>
-            </AppBar>
+
             {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    Beach Tag
+                    Pricing
         </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" component="p">
-                    Purchase your tags below, and to the shore you'll go!
+                    Choose your beach, select a tag, & enjoy your time at the shore!
         </Typography>
+
+                <Location />
+                {/* // onChange={handleInputChange}  */}
             </Container>
             {/* End hero unit */}
+
+
             <Container maxWidth="md" component="main">
                 <Grid container spacing={5} alignItems="flex-end">
                     {tiers.map((tier) => (
@@ -156,16 +170,12 @@ export default function Pricing() {
                                     subheader={tier.subheader}
                                     titleTypographyProps={{ align: 'center' }}
                                     subheaderTypographyProps={{ align: 'center' }}
-                                    action={tier.title === 'Pro' ? <StarIcon /> : null}
                                     className={classes.cardHeader}
                                 />
                                 <CardContent>
                                     <div className={classes.cardPricing}>
                                         <Typography component="h2" variant="h3" color="textPrimary">
                                             ${tier.price}
-                                        </Typography>
-                                        <Typography variant="h6" color="textSecondary">
-                                            ${tier.type}
                                         </Typography>
                                     </div>
                                     <ul>
@@ -179,6 +189,9 @@ export default function Pricing() {
                                 <CardActions>
                                     <Button fullWidth variant={tier.buttonVariant} color="primary">
                                         {tier.buttonText}
+
+                                        {/* onClick={handleFormSubmit} */}
+
                                     </Button>
                                 </CardActions>
                             </Card>

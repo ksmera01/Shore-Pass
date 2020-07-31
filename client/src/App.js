@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/Dashboard';
+import Pricing from './pages/Pricing'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             {/* <Dashboard /> */}
           </Route>
           <Route path="/pricing">
-            {/* <Dashboard /> */}
+            <Pricing />
           </Route>
           <Route path="/dashboard" >
             <Dashboard />

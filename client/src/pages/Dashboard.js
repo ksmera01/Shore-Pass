@@ -12,7 +12,7 @@ import API from '../utils/API';
 // import Deposits from './Deposits'; //Update these values to QR code section
 // import Orders from './Orders'; //Update these values to User Information
 import Copyright from '../components/Copyright';
-import DateTime from '../components/DateTime';
+// import DateTime from '../components/DateTime';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -80,9 +80,9 @@ function Dashboard() {
                             {/* <h2>Hey {user.name}</h2> */}
                             <h1>Hello {user.firstName} {user.lastName}</h1>
                             {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
-                            <DateTime />
-                            {/* <h5>{moment().format('ll')}</h5>
-                            <h5>{moment().format('LT')}</h5> */}
+                            {/* <DateTime /> */}
+                            <h5>{moment().format('ll')}</h5>
+                            <h5>{moment().format('LT')}</h5>
                             {/* <Chart /> */}
                             {/* </Paper> */}
                         </Grid>

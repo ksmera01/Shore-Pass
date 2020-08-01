@@ -9,9 +9,6 @@ import Grid from '@material-ui/core/Grid';
 
 const products = [
     { name: 'Beach Tag', desc: 'Sea Isle (weekly)', price: '$9.99' },
-    { name: 'Beach Tag', desc: 'Atlantic City (monthly)', price: '$15.99' },
-    { name: 'Beach Tag', desc: 'Ocean City (seasonal)', price: '$25.99' },
-    { name: 'Beach Tag', desc: 'Stone Harbor (monthly)', price: '$16.99' },
     { name: 'Shipping', desc: '', price: 'Free' },
 ];
 const addresses = ['1 Sunset Drive', 'Hollywood', 'California', '19046', 'USA'];

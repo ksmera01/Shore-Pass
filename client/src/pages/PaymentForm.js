@@ -3,8 +3,8 @@ import { TransactionContext } from '../context/TransactionContext'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
+// import Checkbox from '@material-ui/core/Checkbox';
 
 export default function PaymentForm() {
     const { cart, setCart } = useContext(TransactionContext)
@@ -20,6 +20,9 @@ export default function PaymentForm() {
                 Payment Method
       </Typography>
             <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                    <TextField required id="cardType" label="Card type" name='cardType' fullWidth autoComplete="cc-type" onChange={handleInputChange} />
+                </Grid>
                 <Grid item xs={12} md={6}>
                     <TextField required id="cardName" label="Name on card" name='cardHolder' fullWidth autoComplete="cc-name" onChange={handleInputChange} />
                 </Grid>

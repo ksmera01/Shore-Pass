@@ -29,8 +29,6 @@ export default function Review() {
     console.log(cart)
     const classes = useStyles();
 
-    const cartAddress = [cart.address1, cart.address2, cart.city, cart.state, cart.zip];
-
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -56,7 +54,9 @@ export default function Review() {
                         Shipping
           </Typography>
                     <Typography gutterBottom>{cart.firstName} {cart.lastName}</Typography>
-                    <Typography gutterBottom>{cartAddress.join(', ')}</Typography>
+                    <Typography gutterBottom>{cart.address1}</Typography>
+                    <Typography gutterBottom>{cart.address2}</Typography>
+                    <Typography gutterBottom>{cart.city}, {cart.state}, {cart.zip}</Typography>
                 </Grid>
                 <Grid item container direction="column" xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom className={classes.title}>

@@ -12,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
+import API from '../utils/API';
 
 function Copyright() {
     return (
@@ -84,7 +85,11 @@ export default function Transaction() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
 
-    const handleNext = () => {
+    const handleNext = async () => {
+        if (activeStep === steps.length - 1) {
+            await API.placeOrder(cart)
+                .then(res => console.log(res))
+        }
         setActiveStep(activeStep + 1);
     };
 

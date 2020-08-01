@@ -13,6 +13,7 @@ import API from '../utils/API';
 // import Orders from './Orders'; //Update these values to User Information
 import Copyright from '../components/Copyright';
 // import DateTime from '../components/DateTime';
+// import Moment from 'react-moment';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -81,8 +82,8 @@ function Dashboard() {
                             <h1>Hello {user.firstName} {user.lastName}</h1>
                             {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
                             {/* <DateTime /> */}
-                            <h5>{moment().format('ll')}</h5>
-                            <h5>{moment().format('LT')}</h5>
+                            {/* <h5>{Moment.format('ll')}</h5>
+                            <h5>{Moment.format('LT')}</h5> */}
                             {/* <Chart /> */}
                             {/* </Paper> */}
                         </Grid>

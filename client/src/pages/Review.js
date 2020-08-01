@@ -10,14 +10,7 @@ import Grid from '@material-ui/core/Grid';
 const products = [
     { name: 'Beach Tag', desc: 'Sea Isle (weekly)', price: '$9.99' },
     { name: 'Shipping', desc: '', price: 'Free' },
-];
-const addresses = ['1 Sunset Drive', 'Hollywood', 'California', '19046', 'USA'];
-const payments = [
-    { name: 'Card type', detail: 'Visa' },
-    { name: 'Card holder', detail: 'Mr John Stamos' },
-    { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-    { name: 'Expiry date', detail: '04/2024' },
-];
+]
 
 const useStyles = makeStyles((theme) => ({
     listItem: {
@@ -35,6 +28,8 @@ export default function Review() {
     const { cart, setCart } = useContext(TransactionContext)
     console.log(cart)
     const classes = useStyles();
+
+    const cartAddress = [cart.address1, cart.address2, cart.city, cart.state, cart.zip];
 
     return (
         <React.Fragment>
@@ -60,24 +55,34 @@ export default function Review() {
                     <Typography variant="h6" gutterBottom className={classes.title}>
                         Shipping
           </Typography>
-                    <Typography gutterBottom>John Stamos</Typography>
-                    <Typography gutterBottom>{addresses.join(', ')}</Typography>
+                    <Typography gutterBottom>{cart.firstName} {cart.lastName}</Typography>
+                    <Typography gutterBottom>{cartAddress.join(', ')}</Typography>
                 </Grid>
                 <Grid item container direction="column" xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom className={classes.title}>
                         Payment Details
           </Typography>
                     <Grid container>
-                        {payments.map((payment) => (
-                            <React.Fragment key={payment.name}>
-                                <Grid item xs={6}>
-                                    <Typography gutterBottom>{payment.name}</Typography>
-                                </Grid>
-                                <Grid item xs={6}>
-                                    <Typography gutterBottom>{payment.detail}</Typography>
-                                </Grid>
-                            </React.Fragment>
-                        ))}
+                        <React.Fragment key={cart.cardHolder}>
+                            <Grid item xs={12}>
+                                <Typography gutterBottom>Card type: {cart.cardType}</Typography>
+                            </Grid>
+                        </React.Fragment>
+                        <React.Fragment>
+                            <Grid item xs={12}>
+                                <Typography gutterBottom>Card holder: {cart.cardHolder}</Typography>
+                            </Grid>
+                        </React.Fragment>
+                        <React.Fragment>
+                            <Grid item xs={12}>
+                                <Typography gutterBottom>Card number: {cart.cc}</Typography>
+                            </Grid>
+                        </React.Fragment>
+                        <React.Fragment>
+                            <Grid item xs={12}>
+                                <Typography gutterBottom>Expiry date: {cart.expDate}</Typography>
+                            </Grid>
+                        </React.Fragment>
                     </Grid>
                 </Grid>
             </Grid>

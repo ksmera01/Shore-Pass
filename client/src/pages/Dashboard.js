@@ -6,12 +6,14 @@ import Box from '@material-ui/core/Box';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import API from '../utils/API'
+import API from '../utils/API';
 // import { mainListItems, secondaryListItems } from './listItems'; //Update list items on left menu to show sections we want
 // import Chart from './Chart'; //Update these values to show weather
 // import Deposits from './Deposits'; //Update these values to QR code section
 // import Orders from './Orders'; //Update these values to User Information
-import Copyright from '../components/Copyright'
+import Copyright from '../components/Copyright';
+import moment from 'moment';
+import '../components/DateTime';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -74,22 +76,53 @@ function Dashboard() {
                 <Container maxWidth="lg" className={classes.container}>
                     <Grid container spacing={3}>
                         {/* Chart */}
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                {/* <h2>Hey {user.name}</h2> */}
-                                <h2>Hello {user.firstName} {user.lastName}</h2>
-                                {/* <Chart /> */}
-                            </Paper>
+                        <Grid item xs={12} md={12} lg={12}>
+                            {/* <Paper className={fixedHeightPaper}> */}
+                            {/* <h2>Hey {user.name}</h2> */}
+                            <h1>Hello {user.firstName} {user.lastName}</h1>
+                            {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
+                            <DateTime />
+                            {/* <h5>{moment().format('ll')}</h5>
+                            <h5>{moment().format('LT')}</h5> */}
+                            {/* <Chart /> */}
+                            {/* </Paper> */}
                         </Grid>
                         {/* Recent Deposits */}
-                        <Grid item xs={12} md={4} lg={3}>
+                        <Grid item xs={12} align="center">
+                            <h2>Your Tag</h2>
+                        </Grid>
+                        <Grid item xs={12} align="center">
+                            {/* map through tags to display in carousel */}
+                            {/* tags.maps(img=`${https://chart.googleapis.com/chart?}`) */}
                             <Paper className={fixedHeightPaper}>
-                                {/* <Deposits /> */}
+                                QR Carousel
                             </Paper>
                         </Grid>
                         {/* Recent Orders */}
+                        <Grid item xs={12} align="center">
+                            <h2>Shore Stats</h2>
+                        </Grid>
                         <Grid item xs={12}>
-                            <Paper className={classes.paper}>
+                            <Paper className={classes.paper} align="center">
+                                7-Day Forecast
+                                {/* <Orders /> */}
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Paper className={classes.paper} align="center">
+                                Wind Direction
+                                {/* <Orders /> */}
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Paper className={classes.paper} align="center">
+                                Wave Height
+                                {/* <Orders /> */}
+                            </Paper>
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Paper className={classes.paper} align="center">
+                                Water Temp
                                 {/* <Orders /> */}
                             </Paper>
                         </Grid>

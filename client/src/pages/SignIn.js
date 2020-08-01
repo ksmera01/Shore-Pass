@@ -130,12 +130,12 @@ function SignIn() {
             </Button>
                         <Grid container>
                             <Grid item xs>
-                                <Link href="/Dashboard" variant="body2">
+                                {/* <Link href="/Dashboard" variant="body2">
                                     Forgot password?
-                </Link>
+                </Link> */}
                             </Grid>
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link href="/sign-up" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>

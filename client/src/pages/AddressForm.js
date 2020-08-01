@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TransactionContext } from '../context/TransactionContext'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -6,6 +7,14 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 export default function AddressForm() {
+    const { cart, setCart } = useContext(TransactionContext)
+    console.log(cart)
+
+    function handleInputChange(event) {
+        const { name, value } = event.target;
+        setCart({ ...cart, [name]: value })
+    };
+
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
@@ -20,6 +29,7 @@ export default function AddressForm() {
                         label="First name"
                         fullWidth
                         autoComplete="given-name"
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -30,6 +40,7 @@ export default function AddressForm() {
                         label="Last name"
                         fullWidth
                         autoComplete="family-name"
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -40,6 +51,7 @@ export default function AddressForm() {
                         label="Address line 1"
                         fullWidth
                         autoComplete="shipping address-line1"
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -49,6 +61,7 @@ export default function AddressForm() {
                         label="Address line 2"
                         fullWidth
                         autoComplete="shipping address-line2"
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -59,10 +72,11 @@ export default function AddressForm() {
                         label="City"
                         fullWidth
                         autoComplete="shipping address-level2"
+                        onChange={handleInputChange}
                     />
                 </Grid>
                 <Grid item xs={12} sm={6}>
-                    <TextField id="state" name="state" label="State" fullWidth />
+                    <TextField id="state" name="state" label="State" fullWidth onChange={handleInputChange} />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
@@ -72,14 +86,15 @@ export default function AddressForm() {
                         label="Zip / Postal code"
                         fullWidth
                         autoComplete="shipping postal-code"
+                        onChange={handleInputChange}
                     />
                 </Grid>
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <FormControlLabel
                         control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
                         label="Use this address for payment details"
                     />
-                </Grid>
+                </Grid> */}
             </Grid>
         </React.Fragment>
     );

@@ -113,28 +113,19 @@ const footers = [
 export default function Pricing() {
     const classes = useStyles();
 
-    // Setting our component's initial state
-    const [tagObject, setTagObject] = useState({})
+    // Setting our tagObject component's initial state
+    const [tagObject, setTagObject] = useState({
+        title: '',
+        price: '',
+        id: '',
+        description: '',
+        location: '',
+    })
 
-
-    // Handles updating component state when the user types selected in the input field
-    // function handleInputChange(event) {
-    //     const { name, value } = event.target;
-    //     setLocationObject({ ...locationObject, [beach]: value })
-    //     setTagObject({ ...TagObject, [tagType]: value })
-    //     console.log({ formObject })
-    // };
-
-    // When the form is submitted, use the API.saveBook method to save the book data
-    // Then reload books from the database
-    function handleFormSubmit(tag) {
-        // event.preventDefault();
+    function handleFormSubmit({ title, price, id, description }) {
         console.log(tagObject);
-        setTagObject({ ...tagObject, tag })
-        // setTagObject(tag)
+        setTagObject({ ...tagObject, title, price, id, description })
     };
-    // 
-
 
     return (
         <React.Fragment>

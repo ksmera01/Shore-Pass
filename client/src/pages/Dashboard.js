@@ -12,8 +12,7 @@ import API from '../utils/API';
 // import Deposits from './Deposits'; //Update these values to QR code section
 // import Orders from './Orders'; //Update these values to User Information
 import Copyright from '../components/Copyright';
-import moment from 'moment';
-import '../components/DateTime';
+import DateTime from '../components/DateTime';
 
 const useStyles = makeStyles((theme) => ({
     root: {

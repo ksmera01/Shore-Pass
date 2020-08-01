@@ -118,7 +118,7 @@ export default function Transaction() {
                 </Typography>
                                     <Typography variant="subtitle1">
                                         Your order is confirmed. We have emailed your order confirmation.
-                                    <Button href="/" className={classes.buttons} >Return Home</Button>
+                                    <Button href="/dashboard" className={classes.buttons} >Return Home</Button>
                                     </Typography>
                                 </React.Fragment>
                             ) : (

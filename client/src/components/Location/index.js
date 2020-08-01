@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -19,18 +19,15 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Location(props) {
     const classes = useStyles();
-    const [state, setState] = React.useState({
-        beach: '',
-    });
 
+    // Using props from the parent component/page we can gain access to the tagObject state and setTagObject function
     const handleChange = (event) => {
-        //updates setState to what was entered in input field (onChange)
+        //updates tagObject to what was entered in input field (onChange)
         const name = event.target.name;
         props.setTagObject({
             ...props.tagObject,
             [name]: event.target.value,
         });
-        console.log(state.beach)
     };
 
     return (
@@ -39,11 +36,10 @@ export default function Location(props) {
                 <InputLabel htmlFor="age-native-simple">Select Beach</InputLabel>
                 <Select
                     native
-                    value={state.beach}
+                    value={props.location}
                     onChange={handleChange}
                     inputProps={{
-                        name: 'beach',
-
+                        name: 'location',
                     }}
                 >
                     <option aria-label="None" value="" />

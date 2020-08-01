@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import { TransactionContext } from '../context/TransactionContext';
+import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -112,19 +114,14 @@ const footers = [
 
 export default function Pricing() {
     const classes = useStyles();
+    const { cart, setCart } = useContext(TransactionContext)
+    // need to init useHistory..
+    let history = useHistory();
 
-    // Setting our tagObject component's initial state
-    const [tagObject, setTagObject] = useState({
-        title: '',
-        price: '',
-        id: '',
-        description: '',
-        location: '',
-    })
-
-    function handleFormSubmit({ title, price, id, description }) {
-        console.log(tagObject);
-        setTagObject({ ...tagObject, title, price, id, description })
+    async function handleFormSubmit({ title, price, id, description }) {
+        console.log(cart);
+        await setCart({ ...cart, title, price, id, description })
+        history.push("/transaction");
     };
 
     return (
@@ -141,8 +138,8 @@ export default function Pricing() {
         </Typography>
 
                 <Location
-                    setTagObject={setTagObject}
-                    tagObject={tagObject} />
+                    setCart={setCart}
+                    cart={cart} />
 
             </Container>
             {/* End hero unit */}
@@ -201,7 +198,7 @@ export default function Pricing() {
                             <ul>
                                 {footer.description.map((item) => (
                                     <li key={item}>
-                                        <Link href="#" variant="subtitle1" color="textSecondary">
+                                        <Link to="#" variant="subtitle1" color="textSecondary">
                                             {item}
                                         </Link>
                                     </li>

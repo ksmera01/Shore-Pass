@@ -1,3 +1,9 @@
 import { createContext } from 'react';
 
-export const TransactionContext = createContext({})
+export const TransactionContext = createContext({
+    title: '',
+    price: '',
+    id: '',
+    description: '',
+    location: '',
+})

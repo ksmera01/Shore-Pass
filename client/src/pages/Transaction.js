@@ -79,9 +79,7 @@ function getStepContent(step) {
 }
 
 export default function Transaction() {
-    // const {cart, setCart} = useContext(TransactionContext)
-    const [cart, setCart] = useState({})
-    const transactionData = useMemo(() => ({ cart, setCart }), [cart, setCart])
+    const { cart, setCart } = useContext(TransactionContext)
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
@@ -95,57 +93,55 @@ export default function Transaction() {
     };
 
     return (
-        <TransactionContext.Provider value={transactionData}>
-            <React.Fragment>
-                <CssBaseline />
-                <main className={classes.layout}>
-                    <Paper className={classes.paper}>
-                        <Typography component="h1" variant="h4" align="center">
-                            Checkout
+        <React.Fragment>
+            <CssBaseline />
+            <main className={classes.layout}>
+                <Paper className={classes.paper}>
+                    <Typography component="h1" variant="h4" align="center">
+                        Checkout
           </Typography>
-                        <Stepper activeStep={activeStep} className={classes.stepper}>
-                            {steps.map((label) => (
-                                <Step key={label}>
-                                    <StepLabel>{label}</StepLabel>
-                                </Step>
-                            ))}
-                        </Stepper>
-                        <React.Fragment>
-                            {activeStep === steps.length ? (
-                                <React.Fragment>
-                                    <Typography variant="h5" gutterBottom>
-                                        Thank you for your order.
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <React.Fragment>
+                        {activeStep === steps.length ? (
+                            <React.Fragment>
+                                <Typography variant="h5" gutterBottom>
+                                    Thank you for your order.
                 </Typography>
-                                    <Typography variant="subtitle1">
-                                        Your order is confirmed. We have emailed your order confirmation.
+                                <Typography variant="subtitle1">
+                                    Your order is confirmed. We have emailed your order confirmation.
                                     <Button href="/dashboard" className={classes.buttons} >Return Home</Button>
-                                    </Typography>
-                                </React.Fragment>
-                            ) : (
-                                    <React.Fragment>
-                                        {getStepContent(activeStep)}
-                                        <div className={classes.buttons}>
-                                            {activeStep !== 0 && (
-                                                <Button onClick={handleBack} className={classes.button}>
-                                                    Back
-                                                </Button>
-                                            )}
-                                            <Button
-                                                variant="contained"
-                                                color="primary"
-                                                onClick={handleNext}
-                                                className={classes.button}
-                                            >
-                                                {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                </Typography>
+                            </React.Fragment>
+                        ) : (
+                                <React.Fragment>
+                                    {getStepContent(activeStep)}
+                                    <div className={classes.buttons}>
+                                        {activeStep !== 0 && (
+                                            <Button onClick={handleBack} className={classes.button}>
+                                                Back
                                             </Button>
-                                        </div>
-                                    </React.Fragment>
-                                )}
-                        </React.Fragment>
-                    </Paper>
-                    <Copyright />
-                </main>
-            </React.Fragment>
-        </TransactionContext.Provider>
+                                        )}
+                                        <Button
+                                            variant="contained"
+                                            color="primary"
+                                            onClick={handleNext}
+                                            className={classes.button}
+                                        >
+                                            {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                        </Button>
+                                    </div>
+                                </React.Fragment>
+                            )}
+                    </React.Fragment>
+                </Paper>
+                <Copyright />
+            </main>
+        </React.Fragment>
     );
 }

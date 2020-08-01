@@ -26,6 +26,7 @@ function Copyright() {
     );
 }
 
+
 const useStyles = makeStyles((theme) => ({
     '@global': {
         ul: {
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
             listStyle: 'none',
         },
     },
+
+
     link: {
         margin: theme.spacing(1, 1.5),
     },
@@ -109,6 +112,7 @@ const footers = [
 
 export default function Pricing() {
     const classes = useStyles();
+
     // Setting our component's initial state
     const [tagObject, setTagObject] = useState({})
 
@@ -131,9 +135,11 @@ export default function Pricing() {
     };
     // 
 
+
     return (
         <React.Fragment>
             <CssBaseline />
+
             {/* Hero unit */}
             <Container maxWidth="sm" component="main" className={classes.heroContent}>
                 <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -149,6 +155,7 @@ export default function Pricing() {
 
             </Container>
             {/* End hero unit */}
+
 
             <Container maxWidth="md" component="main">
                 <Grid container spacing={5} alignItems="flex-end">

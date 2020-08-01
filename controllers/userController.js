@@ -11,11 +11,19 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
+    console.log(req.params.id)
     db.User
       .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .then(user => res.json({
+        id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        tags: user.tags
+      }))
       .catch(err => res.status(422).json(err));
   },
+  // For Signing up a new User
   create: function (req, res) {
     db.User
       .create(req.body)

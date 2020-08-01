@@ -24,8 +24,8 @@ export default function Location(props) {
     const handleChange = (event) => {
         //updates tagObject to what was entered in input field (onChange)
         const name = event.target.name;
-        props.setTagObject({
-            ...props.tagObject,
+        props.setCart({
+            ...props.cart,
             [name]: event.target.value,
         });
     };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -17,18 +17,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Location() {
+export default function Location(props) {
     const classes = useStyles();
     const [state, setState] = React.useState({
         beach: '',
     });
 
     const handleChange = (event) => {
+        //updates setState to what was entered in input field (onChange)
         const name = event.target.name;
-        setState({
-            ...state,
+        props.setTagObject({
+            ...props.tagObject,
             [name]: event.target.value,
         });
+        console.log(state.beach)
     };
 
     return (
@@ -45,21 +47,21 @@ export default function Location() {
                     }}
                 >
                     <option aria-label="None" value="" />
-                    <option value={1}>Atlantic City</option>
-                    <option value={2}>Avalon</option>
-                    <option value={3}>Belmar</option>
-                    <option value={4}>Brigantine</option>
-                    <option value={5}>Cape May</option>
-                    <option value={6}>Lavallette</option>
-                    <option value={7}>Long Beach Island</option>
-                    <option value={8}>Ocean Grove</option>
-                    <option value={9}>Ocean City</option>
-                    <option value={10}>Point Pleasant Beach</option>
-                    <option value={11}>Belmar</option>
-                    <option value={12}>Sandy Hook</option>
-                    <option value={13}>Spring Lake</option>
-                    <option value={14}>Sea Isle City</option>
-                    <option value={15}>Wildwood</option>
+                    <option value={'Atlantic City'}>Atlantic City</option>
+                    <option value={'Avalon'}>Avalon</option>
+                    <option value={'Belmar'}>Belmar</option>
+                    <option value={'Brigantine'}>Brigantine</option>
+                    <option value={'Cape May'}>Cape May</option>
+                    <option value={'Lavallette'}>Lavallette</option>
+                    <option value={'Long Beach Island'}>Long Beach Island</option>
+                    <option value={'Ocean Grove'}>Ocean Grove</option>
+                    <option value={'Ocean City'}>Ocean City</option>
+                    <option value={'Point Pleasant Beach'}>Point Pleasant Beach</option>
+                    <option value={'Sandy Hook'}>Sandy Hook</option>
+                    <option value={'Seaside Heights'}>Seaside Heights</option>
+                    <option value={'Spring Lake'}>Spring Lake</option>
+                    <option value={'Sea Isle City'}>Sea Isle City</option>
+                    <option value={'Wildwood'}>Wildwood</option>
                 </Select>
             </FormControl>
 

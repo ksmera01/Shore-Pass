@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -69,6 +69,7 @@ const tiers = [
     {
         title: 'Day',
         price: '5',
+        id: '0',
         description: ['Valid for Day of Purchase'],
         buttonText: 'Select Day Tag',
         buttonVariant: 'outlined',
@@ -76,6 +77,7 @@ const tiers = [
     {
         title: 'Weekly',
         price: '10',
+        id: '1',
         description: ['Valid for Week of Purchase'],
         buttonText: 'Select Weekly Tag',
         buttonVariant: 'outlined',
@@ -83,6 +85,7 @@ const tiers = [
     {
         title: 'Seasonal',
         price: '25',
+        id: '2',
         description: ['Valid for Season of Purchase'],
         buttonText: 'Select Seasonal Tag',
         buttonVariant: 'outlined',
@@ -111,33 +114,26 @@ export default function Pricing() {
     const classes = useStyles();
 
     // Setting our component's initial state
-    //     const [pricing, sendPricing] = useState([])
-    //     const [locationObject, setLocationObject] = useState({})
-    //     const [tagObject, setTagObject] = useState({})
+    const [tagObject, setTagObject] = useState({})
 
 
-    //     // Handles updating component state when the user types selected in the input field
-    //     function handleInputChange(event) {
-    //         const { name, value } = event.target;
-    //         setLocationObject({ ...locationObject, [beach]: value })
-    //         setTagObject({ ...TagObject, [tagType]: value })
-    //         console.log({ formObject })
-    //     };
+    // Handles updating component state when the user types selected in the input field
+    // function handleInputChange(event) {
+    //     const { name, value } = event.target;
+    //     setLocationObject({ ...locationObject, [beach]: value })
+    //     setTagObject({ ...TagObject, [tagType]: value })
+    //     console.log({ formObject })
+    // };
 
-    //     // When the form is submitted, use the API.saveBook method to save the book data
-    //     // Then reload books from the database
-    //     function handleFormSubmit(event) {
-    //         event.preventDefault();
-    //         if (formLocationObject.beach && formTagObject) {
-    //             console.log(formLocationObject.beach)
-    //             console.log(formTagObject.tagType)
-    //             //NEED TO FIX
-    //             Transaction.sendPricing(formObject.title).then(res => { setBooks(res.items) })
-    //                 .then(setFormObject())
-    //                 .catch(err => console.log(err));
-    //         }
-    //     };
-    // // 
+    // When the form is submitted, use the API.saveBook method to save the book data
+    // Then reload books from the database
+    function handleFormSubmit(tag) {
+        // event.preventDefault();
+        console.log(tagObject);
+        setTagObject({ ...tagObject, tag })
+        // setTagObject(tag)
+    };
+    // 
 
 
     return (
@@ -153,8 +149,10 @@ export default function Pricing() {
                     Choose your beach, select a tag, & enjoy your time at the shore!
         </Typography>
 
-                <Location />
-                {/* // onChange={handleInputChange}  */}
+                <Location
+                    setTagObject={setTagObject}
+                    tagObject={tagObject} />
+
             </Container>
             {/* End hero unit */}
 
@@ -187,11 +185,13 @@ export default function Pricing() {
                                     </ul>
                                 </CardContent>
                                 <CardActions>
-                                    <Button fullWidth variant={tier.buttonVariant} color="primary">
+                                    <Button fullWidth variant={tier.buttonVariant} color="primary" onClick={() => handleFormSubmit({
+                                        title: tier.title,
+                                        price: tier.price,
+                                        id: tier.id,
+                                        description: tier.description,
+                                    })}>
                                         {tier.buttonText}
-
-                                        {/* onClick={handleFormSubmit} */}
-
                                     </Button>
                                 </CardActions>
                             </Card>

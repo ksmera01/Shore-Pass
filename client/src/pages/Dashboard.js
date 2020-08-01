@@ -61,10 +61,10 @@ function Dashboard() {
         getUserId()
     }, [])
 
-    if (!user) {
+    if (!user.id) {
         return (
             <Paper>
-                <h3>Wait a minute.. You're not logged in..</h3>
+                <h4>Loading assets..</h4>
             </Paper>
         )
     } else {

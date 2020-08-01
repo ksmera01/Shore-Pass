@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { TransactionContext } from '../context/TransactionContext'
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -34,6 +35,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Review() {
+    const { cart, setCart } = useContext(TransactionContext)
+    console.log(cart)
     const classes = useStyles();
 
     return (

@@ -11,11 +11,13 @@ router.route("/sign-up")
 
 // This route for user login /api/user/login
 router.post("/login", passport.authenticate("local"), function (req, res) {
+  console.log(req.user)
   res.json(req.user);
 });
 
 // This route for user api/user/logout
 router.get("/logout", function (req, res) {
+  console.log(req.user)
   req.logout();
   res.redirect("/");
 });
@@ -24,5 +26,10 @@ router.get("/logout", function (req, res) {
 router.route("/:id")
   .get(userController.findById)
 // .put(userController.update)
+
+// ROUTE TO TEST MIDDLEWARE AUTHENTICATION
+router.route('/test', isAuthenticated, (req, res) => {
+  res.send('PASSED AUTH')
+})
 
 module.exports = router;

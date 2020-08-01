@@ -53,7 +53,7 @@ export default function MenuAppBar() {
     API.logout(res => {
       console.log(res)
     })
-    window.location.href = '/';
+    // window.location.href = '/';
   }
 
   return (
@@ -86,7 +86,7 @@ export default function MenuAppBar() {
                 horizontal: 'right',
               }}
               open={open}
-              onClose={handleClose}
+              onClose={() => setAnchorEl(null)}
             >
 
               <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>

@@ -110,7 +110,6 @@ export default function PrivacyPolicy() {
 
             </main>
             <Footer />
-            <Copyright />
         </React.Fragment >
     );
 }

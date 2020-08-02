@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardHeader: {
         backgroundColor:
-            theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[700],
+            theme.palette.type === 'light' ? theme.palette.info.light : theme.palette.info.light,
     },
     cardPricing: {
         display: 'flex',
@@ -156,7 +156,7 @@ export default function Pricing() {
                                     subheader={tier.subheader}
                                     titleTypographyProps={{ align: 'center' }}
                                     subheaderTypographyProps={{ align: 'center' }}
-                                    className={classes.cardHeader}
+                                    style={{ background: '#43c8c5' }}
                                 />
                                 <CardContent>
                                     <div className={classes.cardPricing}>

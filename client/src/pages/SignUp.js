@@ -135,6 +135,7 @@ export default function SignUp() {
                         color="primary"
                         onClick={(e) => handleFormSubmit(e)}
                         className={classes.submit}
+                        style={{ background: '#43c8c5' }}
                     >
                         Sign Up
           </Button>

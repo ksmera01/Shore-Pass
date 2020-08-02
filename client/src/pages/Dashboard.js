@@ -12,8 +12,9 @@ import API from '../utils/API';
 // import Deposits from './Deposits'; //Update these values to QR code section
 // import Orders from './Orders'; //Update these values to User Information
 import Copyright from '../components/Copyright';
-// import DateTime from '../components/DateTime';
-// import Moment from 'react-moment';
+import DateTime from '../components/DateTime';
+
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -63,7 +64,7 @@ function Dashboard() {
         getUserId()
     }, [])
 
-    if (!user.id) {
+    if (!user._id) {
         return (
             <Paper>
                 <h4>Loading assets..</h4>
@@ -81,7 +82,7 @@ function Dashboard() {
                             {/* <h2>Hey {user.name}</h2> */}
                             <h1>Hello {user.firstName} {user.lastName}</h1>
                             {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
-                            {/* <DateTime /> */}
+                            <DateTime />
                             {/* <h5>{Moment.format('ll')}</h5>
                             <h5>{Moment.format('LT')}</h5> */}
                             {/* <Chart /> */}

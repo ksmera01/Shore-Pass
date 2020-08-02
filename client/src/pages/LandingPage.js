@@ -3,6 +3,7 @@ import MainHeader from '../components/MainHeader/mainheader';
 import AboutUs from '../components/AboutUs/aboutus';
 import LandingPricing from '../components/LandingPricing/landingpricing';
 import Container from '@material-ui/core/Container';
+import Footer from '../components/Footer/footer'
 
 const landingPricing = {
     title: 'Find Shore Tags for your next getaway!',
@@ -20,6 +21,7 @@ export default function LandingPage() {
                 <AboutUs />
                 <LandingPricing post={landingPricing} />
             </Container>
+            < Footer />
         </React.Fragment>
     );
 }

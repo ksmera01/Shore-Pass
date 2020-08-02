@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
     image: {
-        backgroundImage: 'url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/sunset-beach-cape-may-new-jersey-carolyn-derstine.jpg)',
+        backgroundImage: 'url(https://www.ecomagazine.com/images/Newsletter/0_2019/Week_11-18-19/birdseyeview_ocean.jpg)',
         backgroundRepeat: 'no-repeat',
         backgroundColor:
             theme.palette.type === 'light' ? theme.palette.grey[50] : theme.palette.grey[900],

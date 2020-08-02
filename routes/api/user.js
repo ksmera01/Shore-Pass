@@ -25,7 +25,7 @@ router.get("/logout", function (req, res) {
 // Finds user, Matches with "/api/user/:id"
 router.route("/:id")
   .get(userController.findById)
-// .put(userController.update)
+// .put(userController.update, (req))
 
 // ROUTE TO TEST MIDDLEWARE AUTHENTICATION
 router.route('/test', isAuthenticated, (req, res) => {

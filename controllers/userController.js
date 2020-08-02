@@ -14,13 +14,9 @@ module.exports = {
     console.log(req.params.id)
     db.User
       .findById(req.params.id)
-      .then(user => res.json({
-        id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        tags: user.tags
-      }))
+      // .find({ _id: req.params.id })
+      .populate('tags')
+      .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
   // For Signing up a new User
@@ -32,7 +28,7 @@ module.exports = {
   },
   // update: function (req, res) {
   //   db.User
-  //     .findOneAndUpdate({ _id: req.params.id }, req.body)
+  //     .findOneAndUpdate({ _id: req.params.id }, {$push: {}} req.body)
   //     .then(dbModel => res.json(dbModel))
   //     .catch(err => res.status(422).json(err));
   // },

@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Transaction from './pages/Transaction';
 import LandingPage from './pages/LandingPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
 
@@ -45,6 +46,9 @@ function App() {
             </Route>
             <Route path="/sign-up">
               <SignUp />
+            </Route>
+            <Route path="/privacypolicy">
+              <PrivacyPolicy />
             </Route>
           </Switch>
         </TransactionContext.Provider>

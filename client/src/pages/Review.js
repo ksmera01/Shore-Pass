@@ -7,11 +7,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 
-const products = [
-    { name: 'Beach Tag', desc: 'Sea Isle (weekly)', price: '$9.99' },
-    { name: 'Shipping', desc: '', price: 'Free' },
-]
-
 const useStyles = makeStyles((theme) => ({
     listItem: {
         padding: theme.spacing(1, 0),
@@ -28,6 +23,8 @@ export default function Review() {
     const { cart, setCart } = useContext(TransactionContext)
     console.log(cart)
     const classes = useStyles();
+    let slice = cart.cc.length - 4;
+    let displayed = cart.cc.slice(slice, cart.cc.length)
 
     return (
         <React.Fragment>
@@ -35,23 +32,27 @@ export default function Review() {
                 Order Summary
       </Typography>
             <List disablePadding>
-                {products.map((product) => (
+                <ListItem className={classes.listItem} key={cart.title}>
+                    <ListItemText primary={`${cart.title} tag for ${cart.location}`} secondary={cart.description[0]} />
+                    <Typography variant="body2">${cart.price}</Typography>
+                </ListItem>
+                {/* {products.map((product) => (
                     <ListItem className={classes.listItem} key={product.name}>
                         <ListItemText primary={product.name} secondary={product.desc} />
                         <Typography variant="body2">{product.price}</Typography>
                     </ListItem>
-                ))}
+                ))} */}
                 <ListItem className={classes.listItem}>
                     <ListItemText primary="Total" />
                     <Typography variant="subtitle1" className={classes.total}>
-                        $68.96
-          </Typography>
+                        ${cart.price} includes tax
+                    </Typography>
                 </ListItem>
             </List>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                     <Typography variant="h6" gutterBottom className={classes.title}>
-                        Shipping
+                        Your deets
           </Typography>
                     <Typography gutterBottom>{cart.firstName} {cart.lastName}</Typography>
                     <Typography gutterBottom>{cart.address1}</Typography>
@@ -65,17 +66,12 @@ export default function Review() {
                     <Grid container>
                         <React.Fragment key={cart.cardHolder}>
                             <Grid item xs={12}>
-                                <Typography gutterBottom>Card type: {cart.cardType}</Typography>
+                                <Typography gutterBottom>Card Provider: {cart.cardType} Ending in {displayed}</Typography>
                             </Grid>
                         </React.Fragment>
                         <React.Fragment>
                             <Grid item xs={12}>
-                                <Typography gutterBottom>Card holder: {cart.cardHolder}</Typography>
-                            </Grid>
-                        </React.Fragment>
-                        <React.Fragment>
-                            <Grid item xs={12}>
-                                <Typography gutterBottom>Card number: {cart.cc}</Typography>
+                                <Typography gutterBottom>Cardholder: {cart.cardHolder}</Typography>
                             </Grid>
                         </React.Fragment>
                         <React.Fragment>

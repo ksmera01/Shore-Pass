@@ -18,7 +18,7 @@ export default function AddressForm() {
     return (
         <React.Fragment>
             <Typography variant="h6" gutterBottom>
-                Shipping Address
+                Billing Details
       </Typography>
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
@@ -50,7 +50,7 @@ export default function AddressForm() {
                         name="address1"
                         label="Address line 1"
                         fullWidth
-                        autoComplete="shipping address-line1"
+                        autoComplete="billing address-line1"
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -60,7 +60,7 @@ export default function AddressForm() {
                         name="address2"
                         label="Address line 2"
                         fullWidth
-                        autoComplete="shipping address-line2"
+                        autoComplete="billing address-line2"
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -71,7 +71,7 @@ export default function AddressForm() {
                         name="city"
                         label="City"
                         fullWidth
-                        autoComplete="shipping address-level2"
+                        autoComplete="billing address-level2"
                         onChange={handleInputChange}
                     />
                 </Grid>
@@ -85,7 +85,7 @@ export default function AddressForm() {
                         name="zip"
                         label="Zip / Postal code"
                         fullWidth
-                        autoComplete="shipping postal-code"
+                        autoComplete="billing postal-code"
                         onChange={handleInputChange}
                     />
                 </Grid>

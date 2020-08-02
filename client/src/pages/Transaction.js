@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Billing address', 'Payment details', 'Review your order'];
 
 function getStepContent(step) {
     switch (step) {
@@ -86,6 +86,20 @@ export default function Transaction() {
     const [activeStep, setActiveStep] = React.useState(0);
 
     const handleNext = async () => {
+        if (activeStep === 0) {
+            if (cart.firstName && cart.lastName && cart.state && cart.zip && cart.city && cart.address1) {
+                return setActiveStep(activeStep + 1);
+            } else {
+                return alert('Please fill in all required fields')
+            }
+        }
+        if (activeStep === 1) {
+            if (cart.cardType && cart.cardHolder && cart.cc && cart.cvv && cart.expDate) {
+                return setActiveStep(activeStep + 1);
+            } else {
+                return alert('Please fill in all required fields')
+            }
+        }
         if (activeStep === steps.length - 1) {
             await API.placeOrder(cart)
                 .then(res => console.log(res.data))

@@ -36,7 +36,7 @@ export default function AboutUs() {
                 </Button>
                         </Grid>
                         <Grid item>
-                            <Button href="/login" variant="outlined" color="black">
+                            <Button href="/login" variant="contained" style={{ background: '#43c8c5' }} color="primary">
                                 Log In
                 </Button>
                         </Grid>

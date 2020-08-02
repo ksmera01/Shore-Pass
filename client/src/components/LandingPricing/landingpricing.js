@@ -54,7 +54,7 @@ export default function LandingPricing(props) {
                         <Typography variant="h5" color="inherit" paragraph>
                             {post.description}
                         </Typography>
-                        <Button href="/pricing" variant="contained" color="primary">
+                        <Button href="/pricing" style={{ background: '#43c8c5' }} variant="contained" color="primary">
                             View Tags
                         </Button>
                     </div>

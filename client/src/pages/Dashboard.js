@@ -13,6 +13,7 @@ import API from '../utils/API';
 // import Orders from './Orders'; //Update these values to User Information
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
+import QRCarousel from '../components/Carousel';
 
 
 
@@ -45,6 +46,7 @@ function Dashboard() {
 
     // EVENTUALLY REWORKING THIS FUNCTIONALITY INTO CONTEXT PROVIDER ON APP
     const [user, setUser] = useState({})
+
     const getUserId = async () => {
         // Check localstorage for a user id token and fetch user data if it exists, otherwise redirect to login
         let userId = await JSON.parse(localStorage.getItem('user_id_SP'))
@@ -53,7 +55,7 @@ function Dashboard() {
         } else {
             API.findUserId(userId)
                 .then(res => {
-                    console.log(res)
+                    console.log(res.data)
                     setUser(res.data)
                 })
                 .catch(err => console.log(err));
@@ -95,9 +97,12 @@ function Dashboard() {
                         <Grid item xs={12} align="center">
                             {/* map through tags to display in carousel */}
                             {/* tags.maps(img=`${https://chart.googleapis.com/chart?}`) */}
-                            <Paper className={fixedHeightPaper}>
+                            {/* <Paper className={fixedHeightPaper}>
                                 QR Carousel
-                            </Paper>
+                            </Paper> */}
+                            <QRCarousel
+                                tags={user.tags}
+                            />
                         </Grid>
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">
@@ -132,7 +137,7 @@ function Dashboard() {
                         <Copyright />
                     </Box>
                 </Container>
-            </div>
+            </div >
         );
     }
 }

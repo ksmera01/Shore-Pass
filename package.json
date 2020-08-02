@@ -31,6 +31,7 @@
     "mongoose": "^5.3.16",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "react-moment": "^0.9.7"
+    "react-moment": "^0.9.7",
+    "react-swipeable-views": "^0.13.9"
   }
 }

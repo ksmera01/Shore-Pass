@@ -2,11 +2,13 @@ import React from 'react';
 import OceanVid from '../../Media/oceanvid.m4v'
 import "./style.css";
 import Button from '@material-ui/core/Button';
+import Nav from '../Nav'
 
 export default function MainHeader() {
 
     return (
         <React.Fragment>
+            < Nav className="nav header-overlay" />
             <header className="v-header container">
                 <div className="fullscreen-video-wrap">
                     <video

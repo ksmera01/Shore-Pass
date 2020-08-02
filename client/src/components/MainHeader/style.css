@@ -78,6 +78,10 @@
     padding:20px 0;
 }
 
+.textStyle {
+    font-family: 'Playfair Display SC', serif;
+}
+
 @media(max-width:960px){
     .container{
         padding-right: 3rem;

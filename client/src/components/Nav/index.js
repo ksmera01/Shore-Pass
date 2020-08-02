@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import API from '../../utils/API'
+import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-  },
+    fontFamily: 'Frijole',
+  }
 }));
 
 export default function MenuAppBar() {
@@ -58,7 +60,7 @@ export default function MenuAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" style={{ background: '#dcbb8e' }}>
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Shore Pass

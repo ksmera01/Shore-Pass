@@ -8,7 +8,7 @@ export default function MainHeader() {
 
     return (
         <React.Fragment>
-            < Nav className="nav header-overlay" />
+            < Nav />
             <header className="v-header container">
                 <div className="fullscreen-video-wrap">
                     <video
@@ -21,9 +21,10 @@ export default function MainHeader() {
                 </div>
                 <div className="header-overlay"></div>
                 <div className="header-content">
-                    <h1>Shore Pass </h1>
-                    <p> Easily access shore tags right on your mobile device!</p>
-                    <Button href="" variant="contained" color="primary">
+                    <h1 className="fontStyle">Shore Pass </h1>
+                    <br></br>
+                    <p className="fontStyle"> Easily access shore tags right on your mobile device!</p>
+                    <Button href="" variant="contained" style={{ background: '#dcbb8e' }} color="primary">
                         Learn More
                 </Button>
                 </div>

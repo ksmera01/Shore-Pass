@@ -107,7 +107,7 @@ export default function Transaction() {
           </Typography>
                     <Stepper activeStep={activeStep} className={classes.stepper}>
                         {steps.map((label) => (
-                            <Step key={label}>
+                            <Step key={label}  >
                                 <StepLabel>{label}</StepLabel>
                             </Step>
                         ))}
@@ -120,7 +120,7 @@ export default function Transaction() {
                 </Typography>
                                 <Typography variant="subtitle1">
                                     Your order is confirmed. We have emailed your order confirmation.
-                                    <Button href="/dashboard" className={classes.buttons} >Return Home</Button>
+                                    <Button href="/dashboard" className={classes.buttons} style={{ background: '#43c8c5' }} >Return Home</Button>
                                 </Typography>
                             </React.Fragment>
                         ) : (
@@ -128,7 +128,7 @@ export default function Transaction() {
                                     {getStepContent(activeStep)}
                                     <div className={classes.buttons}>
                                         {activeStep !== 0 && (
-                                            <Button onClick={handleBack} className={classes.button}>
+                                            <Button onClick={handleBack} className={classes.button} style={{ background: '#43c8c5', color: '#FFFFFF' }}>
                                                 Back
                                             </Button>
                                         )}
@@ -137,6 +137,7 @@ export default function Transaction() {
                                             color="primary"
                                             onClick={handleNext}
                                             className={classes.button}
+                                            style={{ background: '#43c8c5' }}
                                         >
                                             {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                                         </Button>

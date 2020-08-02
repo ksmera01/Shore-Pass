@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
 const tiers = [
     {
         title: 'Day',
-        price: '5',
+        price: '5.00',
         id: '0',
         description: ['Valid for Day of Purchase'],
         buttonText: 'Select Day Tag',
@@ -78,7 +78,7 @@ const tiers = [
     },
     {
         title: 'Weekly',
-        price: '10',
+        price: '10.00',
         id: '1',
         description: ['Valid for Week of Purchase'],
         buttonText: 'Select Weekly Tag',
@@ -86,7 +86,7 @@ const tiers = [
     },
     {
         title: 'Seasonal',
-        price: '25',
+        price: '25.00',
         id: '2',
         description: ['Valid for Season of Purchase'],
         buttonText: 'Select Seasonal Tag',
@@ -119,6 +119,9 @@ export default function Pricing() {
     let history = useHistory();
 
     async function handleFormSubmit({ title, price, id, description }) {
+        if (!cart.location) {
+            return alert('You must select a beach location')
+        }
         console.log(cart);
         await setCart({ ...cart, title, price, id, description })
         history.push("/transaction");

@@ -3,8 +3,6 @@ import { TransactionContext } from '../context/TransactionContext'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Checkbox from '@material-ui/core/Checkbox';
 
 export default function AddressForm() {
     const { cart, setCart } = useContext(TransactionContext)
@@ -21,7 +19,7 @@ export default function AddressForm() {
                 Billing Details
       </Typography>
             <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={6} >
                     <TextField
                         required
                         id="firstName"
@@ -89,12 +87,6 @@ export default function AddressForm() {
                         onChange={handleInputChange}
                     />
                 </Grid>
-                {/* <Grid item xs={12}>
-                    <FormControlLabel
-                        control={<Checkbox color="secondary" name="saveAddress" value="yes" />}
-                        label="Use this address for payment details"
-                    />
-                </Grid> */}
             </Grid>
         </React.Fragment>
     );

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    fontFamily: 'Frijole',
+    fontFamily: 'Playfair Display SC',
   }
 }));
 

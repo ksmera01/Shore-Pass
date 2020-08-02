@@ -14,8 +14,6 @@ import API from '../utils/API';
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 
-
-
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -74,7 +72,7 @@ function Dashboard() {
         return (
 
             <div className={classes.root}>
-                <Container maxWidth="lg" className={classes.container}>
+                <Container maxWidth="lg" className={classes.container} style={{ paddingTop: '100px' }}>
                     <Grid container spacing={3}>
                         {/* Chart */}
                         <Grid item xs={12} md={12} lg={12}>

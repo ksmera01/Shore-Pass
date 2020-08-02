@@ -88,7 +88,7 @@ export default function Transaction() {
     const handleNext = async () => {
         if (activeStep === steps.length - 1) {
             await API.placeOrder(cart)
-                .then(res => console.log(res))
+                .then(res => console.log(res.data))
         }
         setActiveStep(activeStep + 1);
     };

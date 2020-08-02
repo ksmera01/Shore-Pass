@@ -7,11 +7,13 @@ const userSchema = new Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    tags: [{
-        ref: 'Tag',
-        type: Schema.Types.ObjectId
-    }],
     createdAt: { type: Date, default: Date.now, required: true },
+    tags: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Tag"
+        }
+    ]
 });
 
 // Define schema methods

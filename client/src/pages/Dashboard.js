@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import API from '../utils/API';
+import { Link, useHistory } from 'react-router-dom'
 // import { mainListItems, secondaryListItems } from './listItems'; //Update list items on left menu to show sections we want
 // import Chart from './Chart'; //Update these values to show weather
 // import Deposits from './Deposits'; //Update these values to QR code section
@@ -40,7 +41,8 @@ function Dashboard() {
     // const { user, setUser } = useContext(UserContext)
     // EVENTUALLY REWORKING THIS FUNCTIONALITY INTO CONTEXT PROVIDER ON APP
     const [user, setUser] = useState({})
-
+    // need to init useHistory..
+    let history = useHistory();
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -48,7 +50,7 @@ function Dashboard() {
         // Check localstorage for a user id token and fetch user data if it exists, otherwise redirect to login
         let userId = await JSON.parse(localStorage.getItem('user_id_SP'))
         if (!userId) {
-            window.location.href = '/login'
+            history.push('/')
         } else {
             API.findUserId(userId)
                 .then(res => {
@@ -89,10 +91,18 @@ function Dashboard() {
                         </Grid>
                         {/* Recent Deposits */}
                         <Grid item xs={12} align="center">
-                            <h2>Your Tag</h2>
+                            <h2>Your Tags</h2>
                         </Grid>
                         <Grid item xs={12} align="center">
-                            <QRCarousel tags={user.tags} />
+                            {user.tags[0] ?
+                                <QRCarousel tags={user.tags} /> :
+                                <div>
+                                    <h5>Looks like you don't have any active tags...</h5>
+                                    <Link to="/pricing">Click here to get one</Link>
+                                </div>
+
+                            }
+
                         </Grid>
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">

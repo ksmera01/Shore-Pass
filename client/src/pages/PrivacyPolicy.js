@@ -21,7 +21,7 @@ export default function PrivacyPolicy() {
         <React.Fragment>
             <main>
                 {/* Hero unit */}
-                <div className={classes.heroContent}>
+                <div className={classes.heroContent} style={{ paddingTop: '100px' }}>
                     <Container maxWidth="md">
                         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
                             Privacy Policy

@@ -114,7 +114,7 @@ export default function Transaction() {
     return (
         <React.Fragment>
             <CssBaseline />
-            <main className={classes.layout}>
+            <main className={classes.layout} style={{ paddingTop: '50px' }}>
                 <Paper className={classes.paper}>
                     <Typography component="h1" variant="h4" align="center">
                         Checkout

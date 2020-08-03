@@ -23,7 +23,7 @@ export default function MainHeader() {
                 <div className="header-content">
                     <h1 className="fontStyle">Shore Pass </h1>
                     <br></br>
-                    <p className="fontStyle"> Easily access shore tags right on your mobile device!</p>
+                    <p className="fontStyle"> Easily access beach tags right on your mobile device!</p>
                     <Button href="" variant="contained" style={{ background: '#dcbb8e' }} color="primary">
                         Learn More
                 </Button>

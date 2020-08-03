@@ -62,7 +62,7 @@ export default function SignUp() {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <div className={classes.paper}>
+            <div className={classes.paper} style={{ paddingTop: '50px' }}>
                 <Avatar className={classes.avatar} style={{ background: '#43c8c5' }}>
                     <LockOutlinedIcon />
                 </Avatar>

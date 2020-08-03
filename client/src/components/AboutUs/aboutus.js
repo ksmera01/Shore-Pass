@@ -26,7 +26,7 @@ export default function AboutUs() {
                     About Us
           </Typography>
                 <Typography variant="h5" align="center" color="textSecondary" paragraph>
-                    Shore Pass allows you to easily find, purchase, view and present your shore tags right on your mobile device! No more losing or forgetting your tags at home!
+                    Shore Pass allows you to easily find, purchase, view and present your beach tags right on your mobile device! No more losing or forgetting your tags at home!
           </Typography>
                 <div className={classes.heroButtons} >
                     <Grid container spacing={2} justify="center">

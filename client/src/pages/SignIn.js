@@ -15,6 +15,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from '../components/Copyright'
 import { UserContext } from '../context/UserContext'
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,6 +50,8 @@ const useStyles = makeStyles((theme) => ({
 
 function SignIn() {
     const classes = useStyles();
+    // need to init useHistory..
+    let history = useHistory();
 
     // submitting form function
     const [login, setLogin] = useState({})
@@ -59,7 +62,7 @@ function SignIn() {
     };
 
     // PIPING FOR CONTEXT.. FOR FUTURE USE
-    // const { user, setUser } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
 
     async function handleFormSubmit(event) {
         event.preventDefault();
@@ -68,14 +71,14 @@ function SignIn() {
                 .then(res => {
                     console.log(res)
                     localStorage.setItem("user_id_SP", JSON.stringify(res.data._id));
-                    // setUser(res.data)
+                    setUser(res.data)
                 })
                 .catch(err => console.log(err));
         }
-        window.location.href = '/dashboard'
+        history.push('/dashboard')
     };
 
-
+    console.log(user)
 
     return (
         <Grid container component="main" className={classes.root}>

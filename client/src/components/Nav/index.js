@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from "react-router-dom";
+import { makeStyles, withTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -11,6 +12,7 @@ import Menu from '@material-ui/core/Menu';
 import API from '../../utils/API'
 import "./style.css";
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -21,11 +23,18 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     fontFamily: 'Playfair Display SC',
+    color: 'white'
+  },
+  title: {
+    flexGrow: 1,
+    fontFamily: 'Playfair Display SC',
   }
 }));
 
 export default function MenuAppBar() {
   const classes = useStyles();
+  // need to init useHistory..
+  let history = useHistory();
 
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -46,16 +55,16 @@ export default function MenuAppBar() {
 
   const handleClose = (url) => {
     setAnchorEl(null);
-    window.location.href = url
+    history.push(url)
   };
 
   const logoutUser = async () => {
     // e.preventDefault();
     await localStorage.removeItem('user_id_SP')
-    API.logout(res => {
+    await API.logout(res => {
       console.log(res)
     })
-    // window.location.href = '/';
+    handleClose('/')
   }
 
   return (
@@ -92,6 +101,7 @@ export default function MenuAppBar() {
             >
 
               <MenuItem onClick={() => handleClose('/')}>Home</MenuItem>
+              <MenuItem onClick={() => handleClose('/pricing')}>Buy Tag</MenuItem>
               {!auth && (
                 <div>
                   <MenuItem onClick={() => handleClose('/login')}>Login</MenuItem>

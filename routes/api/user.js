@@ -11,13 +11,13 @@ router.route("/sign-up")
 
 // This route for user login /api/user/login
 router.post("/login", passport.authenticate("local"), function (req, res) {
-  console.log(req.user)
-  res.json(req.user);
+  console.log(`User ID: ${req.user._id} has logged in`)
+  res.json({ _id: req.user._id, email: req.user.email, firstName: req.user.firstName, lastName: req.user.lastName, isAuth: true });
 });
 
 // This route for user api/user/logout
 router.get("/logout", function (req, res) {
-  console.log(req.user)
+  console.log(`A user has logged out`)
   req.logout();
   res.redirect("/");
 });
@@ -27,9 +27,14 @@ router.route("/:id")
   .get(userController.findById)
 // .put(userController.update, (req))
 
-// ROUTE TO TEST MIDDLEWARE AUTHENTICATION
-router.route('/test', isAuthenticated, (req, res) => {
-  res.send('PASSED AUTH')
-})
+// ROUTE TO TEST MIDDLEWARE AUTHENTICATION /isAuthenticated
+// router.get('/test', function (req, res) {
+//   if (req.user) {
+//     console.log(`User ID: ${req.user._id} TEST AUTH`)
+//     res.send('PASSED AUTH')
+//   } else {
+//     res.send('NOT AUTH')
+//   }
+// })
 
 module.exports = router;

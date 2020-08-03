@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -80,7 +80,7 @@ function getStepContent(step) {
 }
 
 export default function Transaction() {
-    const { cart, setCart } = useContext(TransactionContext)
+    const { cart } = useContext(TransactionContext)
 
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);

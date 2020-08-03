@@ -14,11 +14,17 @@ module.exports = {
     console.log(req.params.id)
     db.User
       .findById(req.params.id)
-      // .find({ _id: req.params.id })
       .populate('tags')
-      .then(user => res.json(user))
+      .then(({ email, firstName, lastName, tags, _id }) => res.json({
+        email, firstName, lastName, tags, _id
+      }))
       .catch(err => res.status(422).json(err));
   },
+  // email: user.email,
+  // firstName: user.firstName,
+  // lastName: user.lastName,
+  // tags: user.tags,
+  // _id: user._id
   // For Signing up a new User
   create: function (req, res) {
     db.User

@@ -38,12 +38,11 @@ function Dashboard() {
 
     // PIPING FOR CONTEXT.. FOR FUTURE USE
     // const { user, setUser } = useContext(UserContext)
+    // EVENTUALLY REWORKING THIS FUNCTIONALITY INTO CONTEXT PROVIDER ON APP
+    const [user, setUser] = useState({})
 
     const classes = useStyles();
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
-
-    // EVENTUALLY REWORKING THIS FUNCTIONALITY INTO CONTEXT PROVIDER ON APP
-    const [user, setUser] = useState({})
 
     const getUserId = async () => {
         // Check localstorage for a user id token and fetch user data if it exists, otherwise redirect to login
@@ -93,14 +92,7 @@ function Dashboard() {
                             <h2>Your Tag</h2>
                         </Grid>
                         <Grid item xs={12} align="center">
-                            {/* map through tags to display in carousel */}
-                            {/* tags.maps(img=`${https://chart.googleapis.com/chart?}`) */}
-                            {/* <Paper className={fixedHeightPaper}>
-                                QR Carousel
-                            </Paper> */}
-                            <QRCarousel
-                                tags={user.tags}
-                            />
+                            <QRCarousel tags={user.tags} />
                         </Grid>
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">

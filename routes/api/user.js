@@ -28,13 +28,14 @@ router.route("/:id")
 // .put(userController.update, (req))
 
 // ROUTE TO TEST MIDDLEWARE AUTHENTICATION /isAuthenticated
-// router.get('/test', function (req, res) {
-//   if (req.user) {
-//     console.log(`User ID: ${req.user._id} TEST AUTH`)
-//     res.send('PASSED AUTH')
-//   } else {
-//     res.send('NOT AUTH')
-//   }
-// })
+router.get('/test', isAuthenticated, function (req, res) {
+  res.send('NOT ALLOWED')
+  // if (req.user) {
+  //   console.log(`User ID: ${req.user._id} TEST AUTH`)
+  //   res.send('PASSED AUTH')
+  // } else {
+  //   res.send('NOT AUTH')
+  // }
+})
 
 module.exports = router;

@@ -11,6 +11,8 @@ import Transaction from './pages/Transaction';
 import LandingPage from './pages/LandingPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CheckoutRouter from './pages/CheckoutRouter';
+import { createMuiTheme } from '@material-ui/core/styles';
+import Team from './pages/Team'
 
 function App() {
 
@@ -21,7 +23,6 @@ function App() {
   // Initialize cart context state, give it a simple variable called transactionData
   const [cart, setCart] = useState({})
   const transactionData = useMemo(() => ({ cart, setCart }), [cart, setCart])
-
 
   return (
     <Router>
@@ -53,6 +54,9 @@ function App() {
               </Route>
               <Route exact path="/privacypolicy">
                 <PrivacyPolicy />
+              </Route>
+              <Route exact path="/team">
+                <Team />
               </Route>
             </Switch>
           </TransactionContext.Provider>

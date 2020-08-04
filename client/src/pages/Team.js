@@ -9,8 +9,10 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
-import ProfileImage from '../Media/beachtags.jpg'
-import Avatar from '@material-ui/core/Avatar';
+import Kevin from '../Media/kevin.jpeg'
+import Tito from '../Media/tito.png'
+import Taneisha from '../Media/taneisha.jpeg'
+import Kait from '../Media/kait.jpeg'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -49,20 +51,20 @@ export default function EmployeeCards() {
     function FormRow() {
         return (
             <React.Fragment>
-                <Grid item xs={6}>
-                    <CardActionArea component="a" href="#">
+                <Grid item xs={6} spacing={2}>
+                    <CardActionArea component="a" href="https://github.com/ejlopez44">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={ProfileImage} />
+                                <img className={classes.img} alt="complex" src={Tito} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
-                                        Team Member
+                                        Tito Lopez
                             </Typography>
                                     <Typography variant="subtitle1" color="textSecondary">
-                                        GitHub
+                                        Click card for GitHub!
                             </Typography>
                                     <Typography variant="subtitle1" paragraph>
-                                        Bio
+                                        I'm Ernesto from Philly. I like motorcycles and javascript. Enjoy our Shore Pass app!
                             </Typography>
                                 </CardContent>
                             </div>
@@ -70,19 +72,65 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
                 <Grid item xs={6}>
-                    <CardActionArea component="a" href="#">
+                    <CardActionArea component="a" href="https://github.com/ksmera01">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={ProfileImage} />
+                                <img className={classes.img} alt="complex" src={Kevin} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
-                                        Team Member
+                                        Kevin Smeraglio
                             </Typography>
                                     <Typography variant="subtitle1" color="textSecondary">
-                                        GitHub
+                                        Click card for GitHub!
                             </Typography>
                                     <Typography variant="subtitle1" paragraph>
-                                        Bio
+                                        Full Stack Web Developer in training. Currently an IT Business Systems Mgr. at PRN.
+                            </Typography>
+                                </CardContent>
+                            </div>
+                            <Hidden xsDown>
+                                <CardMedia image="" title="" />
+                            </Hidden>
+                        </Card>
+                    </CardActionArea>
+                </Grid>
+                <Grid item xs={6}>
+                    <CardActionArea component="a" href="https://github.com/kaito47">
+                        <Card>
+                            <div>
+                                <img className={classes.img} alt="complex" src={Kait} />
+                                <CardContent>
+                                    <Typography component="h2" variant="h5">
+                                        Kaitlin O'Shaughnessy
+                            </Typography>
+                                    <Typography variant="subtitle1" color="textSecondary">
+                                        Click card for GitHub!
+                            </Typography>
+                                    <Typography variant="subtitle1" paragraph>
+                                        Currently I'm a junior full stack developer in the process of completing UPenn's LPS Boot Camp.
+                            </Typography>
+                                </CardContent>
+                            </div>
+                            <Hidden xsDown>
+                                <CardMedia image="" title="" />
+                            </Hidden>
+                        </Card>
+                    </CardActionArea>
+                </Grid>
+                <Grid item xs={6}>
+                    <CardActionArea component="a" href="https://github.com/TLGeorge">
+                        <Card>
+                            <div>
+                                <img className={classes.img} alt="complex" src={Taneisha} />
+                                <CardContent>
+                                    <Typography component="h2" variant="h5">
+                                        Taneisha George
+                            </Typography>
+                                    <Typography variant="subtitle1" color="textSecondary">
+                                        Click card for GitHub!
+                            </Typography>
+                                    <Typography variant="subtitle1" paragraph>
+                                        Junior Full-Stack Web Developer | Student in UPENN LPS Full-Stack Web Development Boot Camp.
                             </Typography>
                                 </CardContent>
                             </div>
@@ -99,11 +147,6 @@ export default function EmployeeCards() {
     return (
         <div style={{ paddingTop: '75px' }}>
             <h1 style={{ textAlign: 'center', fontFamily: 'Playfair Display SC' }}>Shore Pass Team</h1>
-            <Grid container spacing={4}>
-                <Grid container item xs={12} spacing={3}>
-                    <FormRow />
-                </Grid>
-            </Grid>
             <Grid container spacing={4}>
                 <Grid container item xs={12} spacing={3}>
                     <FormRow />

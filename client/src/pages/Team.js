@@ -9,6 +9,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
+import ProfileImage from '../Media/beachtags.jpg'
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,6 +30,17 @@ const useStyles = makeStyles((theme) => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
     },
+    image: {
+        width: 128,
+        height: 128,
+    },
+    img: {
+        margin: 'auto',
+        display: 'block',
+        maxWidth: '50%',
+        maxHeight: '70%',
+        borderRadius: '50%'
+    },
 }));
 
 export default function EmployeeCards() {
@@ -38,8 +51,9 @@ export default function EmployeeCards() {
             <React.Fragment>
                 <Grid item xs={6}>
                     <CardActionArea component="a" href="#">
-                        <Card className={classes.card}>
-                            <div className={classes.cardDetails}>
+                        <Card>
+                            <div>
+                                <img className={classes.img} alt="complex" src={ProfileImage} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Team Member
@@ -52,16 +66,14 @@ export default function EmployeeCards() {
                             </Typography>
                                 </CardContent>
                             </div>
-                            <Hidden xsDown>
-                                <CardMedia className={classes.cardMedia} image="" title="" />
-                            </Hidden>
                         </Card>
                     </CardActionArea>
                 </Grid>
                 <Grid item xs={6}>
                     <CardActionArea component="a" href="#">
-                        <Card className={classes.card}>
-                            <div className={classes.cardDetails}>
+                        <Card>
+                            <div>
+                                <img className={classes.img} alt="complex" src={ProfileImage} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Team Member
@@ -75,7 +87,7 @@ export default function EmployeeCards() {
                                 </CardContent>
                             </div>
                             <Hidden xsDown>
-                                <CardMedia className={classes.cardMedia} image="" title="" />
+                                <CardMedia image="" title="" />
                             </Hidden>
                         </Card>
                     </CardActionArea>
@@ -85,12 +97,14 @@ export default function EmployeeCards() {
     }
 
     return (
-        <div className={classes.root} style={{ paddingTop: '75px' }}>
-            <h1 style={{ textAlign: 'center' }}>Shore Pass Team</h1>
-            <Grid container spacing={1}>
+        <div style={{ paddingTop: '75px' }}>
+            <h1 style={{ textAlign: 'center', fontFamily: 'Playfair Display SC' }}>Shore Pass Team</h1>
+            <Grid container spacing={4}>
                 <Grid container item xs={12} spacing={3}>
                     <FormRow />
                 </Grid>
+            </Grid>
+            <Grid container spacing={4}>
                 <Grid container item xs={12} spacing={3}>
                     <FormRow />
                 </Grid>

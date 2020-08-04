@@ -4,6 +4,7 @@ import AboutUs from '../components/AboutUs/aboutus';
 import LandingPricing from '../components/LandingPricing/landingpricing';
 import Container from '@material-ui/core/Container';
 import Footer from '../components/Footer/footer'
+import { PromiseProvider } from 'mongoose';
 
 const landingPricing = {
     title: 'Find Shore Tags for your next getaway!',

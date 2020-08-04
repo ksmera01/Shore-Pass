@@ -3,6 +3,7 @@ import { TransactionContext } from '../context/TransactionContext'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid'
 // import Stepper from '@material-ui/core/Stepper';
 // import Step from '@material-ui/core/Step';
 // import StepLabel from '@material-ui/core/StepLabel';
@@ -16,6 +17,9 @@ import Accordian from '../components/Accordian'
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+    },
+    clearNav: {
+        paddingTop: '10em',
     },
     container: {
         paddingTop: theme.spacing(4),
@@ -41,18 +45,16 @@ export default function CheckoutRouter() {
     return (
         <React.Fragment>
             <CssBaseline />
-            <Paper className={classes.paper}>
-                <Typography component="h1" variant="h4" align="center">
-                    You're not logged in
-          </Typography>
-            </Paper>
-            <main>
-
-                <div>
-                    <Accordian />
-                </div>
+            <main className={classes.clearNav}>
+                <Grid container spacing={3}>
+                    <Grid item md={2} />
+                    <Grid item xs={12} md={8}>
+                        <Accordian />
+                    </Grid>
+                    <Grid item md={2} />
+                </Grid>
             </main>
             <Copyright />
-        </React.Fragment>
+        </React.Fragment >
     );
 }

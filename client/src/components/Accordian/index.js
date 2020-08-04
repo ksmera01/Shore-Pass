@@ -5,7 +5,9 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+import LoginForm from '../LoginForm'
+import Grid from '@material-ui/core/Grid'
+import Register from '../Register';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -41,6 +43,7 @@ export default function ControlledAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     {/* INSERT ACCORDIAN FORM HERE */}
+
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -53,6 +56,13 @@ export default function ControlledAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     {/* INSERT ACCORDIAN FORM HERE */}
+                    <Grid container spacing={3}>
+                        <Grid item xs={1} md={3} />
+                        <Grid item xs={10} md={6}>
+                            <LoginForm />
+                        </Grid>
+                        <Grid item xs={1} md={3} />
+                    </Grid>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -65,6 +75,7 @@ export default function ControlledAccordions() {
                 </AccordionSummary>
                 <AccordionDetails>
                     {/* INSERT ACCORDIAN FORM HERE */}
+                    <Register />
                 </AccordionDetails>
             </Accordion>
         </div>

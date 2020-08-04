@@ -45,6 +45,15 @@ module.exports = {
             .catch(err => {
                 res.json(err);
             });
+    },
+    createGuest: function (req, res) {
+        db.Tag.create(req.body)
+            .then(tag => {
+                res.json(tag);
+            })
+            .catch(err => {
+                res.json(err);
+            });
     }
     // update: function (req, res) {
     //   db.User

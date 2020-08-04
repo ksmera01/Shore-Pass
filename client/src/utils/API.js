@@ -39,8 +39,11 @@ export default {
             expirationDate: startDate.addDays(timeVar),
             location: cart.location
         }
-        console.log(tag)
-        return axios.post(`/api/tags/${userId}`, tag)
+        if (userId) {
+            return axios.post(`/api/tags/${userId}`, tag)
+        } else {
+            return axios.post(`/api/tags/`, tag)
+        }
     },
     createNewUser: function (userData) {
         return axios.post("/api/user/sign-up", userData);

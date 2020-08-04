@@ -44,9 +44,10 @@ export default function Register() {
             API.createNewUser(signUp)
                 .then(res => {
                     console.log(res)
+                    localStorage.setItem("user_id_SP", JSON.stringify(res.data._id));
                     setUser(res.data)
                 })
-                .then(history.push('/transaction'))
+                .then((location.pathname === '/checkout' ? history.push('/transaction') : history.push('/dashboard')))
                 .catch(err => console.log(err));
         }
     };

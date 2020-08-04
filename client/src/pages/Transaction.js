@@ -1,5 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { TransactionContext } from '../context/TransactionContext'
+import { UserContext } from '../context/UserContext'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -81,7 +83,7 @@ function getStepContent(step) {
 
 export default function Transaction() {
     const { cart } = useContext(TransactionContext)
-
+    const { user } = useContext(UserContext)
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
 

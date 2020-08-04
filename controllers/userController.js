@@ -1,4 +1,5 @@
 const db = require("../models");
+const passport = require("../config/passport");
 
 // Defining methods for the booksController
 module.exports = {
@@ -29,9 +30,17 @@ module.exports = {
   create: function (req, res) {
     db.User
       .create(req.body)
-      .then(dbModel => res.json(dbModel))
+      // .then(dbModel => res.json(dbModel))
+      .then(user => req.login(user, (err) => {
+        if (err) {
+          console.log(err)
+        }
+        return res.json({ email: user.email, firstName: user.firstName, lastName: user.lastName, tags: user.tags, _id: user._id })
+      }))
       .catch(err => res.status(422).json(err));
   },
+
+
   // update: function (req, res) {
   //   db.User
   //     .findOneAndUpdate({ _id: req.params.id }, {$push: {}} req.body)

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
+import { UserContext } from '../context/UserContext'
 import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -115,16 +116,21 @@ const footers = [
 export default function Pricing() {
     const classes = useStyles();
     const { cart, setCart } = useContext(TransactionContext)
+    const { user } = useContext(UserContext)
     // need to init useHistory..
     let history = useHistory();
-
+    console.log(user)
     async function handleFormSubmit({ title, price, id, description }) {
         if (!cart.location) {
             return alert('You must select a beach location')
         }
         console.log(cart);
         await setCart({ ...cart, title, price, id, description })
-        history.push("/transaction");
+        if (user._id) {
+            history.push("/transaction")
+        } else {
+            history.push('/checkout')
+        }
     };
 
     return (

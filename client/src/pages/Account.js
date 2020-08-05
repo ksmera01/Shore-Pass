@@ -101,8 +101,8 @@ export default function myAccount() {
     // };
 
     return (
-        <Container component="main" maxWidth="xs" style={{ paddingTop: '100px' }}>
-            <Typography component="h1" variant="h5" style={{ textAlign: 'center', paddingBottom: '30px' }}>
+        <Container component="main" xs={12} sm={8} md={5} style={{ paddingTop: '100px' }}>
+            <Typography component="h1" variant="h5" style={{ textAlign: 'center', paddingBottom: '20px' }}>
                 My Tags
         </Typography>
             <TableContainer component={Paper} xs={12}>
@@ -167,54 +167,6 @@ export default function myAccount() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
-                            // onChange={handleInputChange}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                id="address1"
-                                name="address1"
-                                label="Address line 1"
-                                fullWidth
-                                autoComplete="billing address-line1"
-                            // onChange={handleInputChange}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                id="address2"
-                                name="address2"
-                                label="Address line 2"
-                                fullWidth
-                                autoComplete="billing address-line2"
-                            // onChange={handleInputChange}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                id="city"
-                                name="city"
-                                label="City"
-                                fullWidth
-                                autoComplete="billing address-level2"
-                            // onChange={handleInputChange}
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField id="state" name="state" label="State" variant="outlined" fullWidth />
-                            {/* onChange={handleInputChange} */}
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                variant="outlined"
-                                id="zip"
-                                name="zip"
-                                label="Zip / Postal code"
-                                fullWidth
-                                autoComplete="billing postal-code"
                             // onChange={handleInputChange}
                             />
                         </Grid>

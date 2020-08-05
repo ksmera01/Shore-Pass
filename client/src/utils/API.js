@@ -14,29 +14,10 @@ export default {
     //   },
     placeOrder: async function (cart) {
         let userId = JSON.parse(localStorage.getItem('user_id_SP'))
-        let startDate = new Date();
-        let timeVar; // default false will allow ternary below to set 
-        // Dynamically set the expiration date depending on tag time
-        if (cart.title === 'Day') {
-            timeVar = 1;
-        };
-        if (cart.title === 'Weekly') {
-            timeVar = 7;
-        }
-        Date.prototype.addDays = function (days) {
-            let date = new Date(this.valueOf());
-            if (!days) {
-                return new Date(`${date.getFullYear() + 1}-1-1`)
-            }
-            date.setDate(date.getDate() + days);
-            return Date.parse(date);
-        }
         let tag = {
             type: cart.title,
             name: `${cart.location} ${cart.title} Tag`,
             price: parseInt(cart.price),
-            startDate: Date.parse(startDate),
-            expirationDate: startDate.addDays(timeVar),
             location: cart.location
         }
         if (userId) {

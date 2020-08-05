@@ -162,7 +162,7 @@ export default function Transaction() {
                                     <Grid item xs={12}>
                                         {confirmation._id &&
                                             <Paper>
-                                                <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/api/tags/${confirmation._id}`} alt={confirmation.name} />
+                                                <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/check?${confirmation._id}`} alt={`QR code: ${confirmation.name}`} />
                                             </Paper>
                                         }
                                     </Grid>

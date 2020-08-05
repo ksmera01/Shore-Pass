@@ -64,6 +64,7 @@ function App() {
               {/* Need this route to expect a search params */}
               <Route path="/check">
                 <Validator />
+              </Route>
               <Route exact path="/account">
                 <Account />
               </Route>

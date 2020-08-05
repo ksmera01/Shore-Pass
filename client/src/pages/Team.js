@@ -52,7 +52,7 @@ export default function EmployeeCards() {
         return (
             <React.Fragment>
                 <Grid item xs={6} spacing={2}>
-                    <CardActionArea component="a" href="https://github.com/ejlopez44">
+                    <CardActionArea component="a" href="https://github.com/ejlopez44" target="blank">
                         <Card>
                             <div>
                                 <img className={classes.img} alt="complex" src={Tito} />
@@ -72,7 +72,7 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
                 <Grid item xs={6}>
-                    <CardActionArea component="a" href="https://github.com/ksmera01">
+                    <CardActionArea component="a" href="https://github.com/ksmera01" target="blank">
                         <Card>
                             <div>
                                 <img className={classes.img} alt="complex" src={Kevin} />
@@ -95,7 +95,7 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
                 <Grid item xs={6}>
-                    <CardActionArea component="a" href="https://github.com/kaito47">
+                    <CardActionArea component="a" href="https://github.com/kaito47" target="blank">
                         <Card>
                             <div>
                                 <img className={classes.img} alt="complex" src={Kait} />
@@ -118,7 +118,7 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
                 <Grid item xs={6}>
-                    <CardActionArea component="a" href="https://github.com/TLGeorge">
+                    <CardActionArea component="a" href="https://github.com/TLGeorge" target="blank">
                         <Card>
                             <div>
                                 <img className={classes.img} alt="complex" src={Taneisha} />

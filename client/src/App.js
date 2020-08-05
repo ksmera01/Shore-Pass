@@ -13,6 +13,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import CheckoutRouter from './pages/CheckoutRouter';
 import { createMuiTheme } from '@material-ui/core/styles';
 import Team from './pages/Team'
+import Account from './pages/Account';
 
 function App() {
 
@@ -57,6 +58,9 @@ function App() {
               </Route>
               <Route exact path="/team">
                 <Team />
+              </Route>
+              <Route exact path="/account">
+                <Account />
               </Route>
             </Switch>
           </TransactionContext.Provider>

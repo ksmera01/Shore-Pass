@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useHistory } from "react-router-dom";
+import { UserContext } from '../../context/UserContext';
 import { makeStyles, withTheme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -36,6 +37,7 @@ export default function MenuAppBar() {
   // need to init useHistory..
   let history = useHistory();
 
+  const { user, setUser } = useContext(UserContext)
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -63,7 +65,8 @@ export default function MenuAppBar() {
     await localStorage.removeItem('user_id_SP')
     await API.logout(res => {
       console.log(res)
-    })
+    });
+    await setUser([])
     handleClose('/')
   }
 

@@ -1,16 +1,7 @@
-import React, { useContext } from 'react';
-import { TransactionContext } from '../context/TransactionContext'
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid'
-// import Stepper from '@material-ui/core/Stepper';
-// import Step from '@material-ui/core/Step';
-// import StepLabel from '@material-ui/core/StepLabel';
-// import Button from '@material-ui/core/Button';
-// import Link from '@material-ui/core/Link';
-import Typography from '@material-ui/core/Typography';
-// import API from '../utils/API';
 import Copyright from '../components/Copyright'
 import Accordian from '../components/Accordian'
 
@@ -38,9 +29,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function CheckoutRouter() {
-    const { cart } = useContext(TransactionContext)
     const classes = useStyles();
-
 
     return (
         <React.Fragment>

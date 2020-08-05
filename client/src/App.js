@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { UserContext } from './context/UserContext';
 import { TransactionContext } from './context/TransactionContext';
@@ -15,17 +15,35 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import Validator from './pages/Validator';
 import Team from './pages/Team'
 import Account from './pages/Account';
+import API from './utils/API'
 
 
 function App() {
 
-  // PIPING IS IN PLACE FOR USECONTEXT, HOWEVER NOT NECESSARY AT THE MOMENT...
+  // CONTEXT SETUP FOR APP COMPONENTS, define variables to pass context down as userData and transacationData
   const [user, setUser] = useState({})
   const userData = useMemo(() => ({ user, setUser }), [user, setUser])
-
-  // Initialize cart context state, give it a simple variable called transactionData
   const [cart, setCart] = useState({})
   const transactionData = useMemo(() => ({ cart, setCart }), [cart, setCart])
+
+  // In React, if a user refreshes the site, we need to tell our app to reset the user context to the token in local storage, otherwise leave it undefined
+  const getUserId = async () => {
+    // Check localstorage for a user id token, if it doesn't exist forget it, otherwise fetch user data and set user context
+    let userId = await JSON.parse(localStorage.getItem('user_id_SP'))
+    if (!userId) {
+      return;
+    } else {
+      API.findUserId(userId)
+        .then(res => {
+          setUser(res.data)
+        })
+        .catch(err => console.log(err));
+    }
+  }
+
+  useEffect(() => {
+    getUserId()
+  }, [])
 
   return (
     <Router>

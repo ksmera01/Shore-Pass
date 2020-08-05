@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
 import { UserContext } from '../context/UserContext'
 import { useHistory } from "react-router-dom";
@@ -13,23 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Location from '../components/Location';
 import Footer from '../components/Footer/footer';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Shore Pass
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -39,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
             listStyle: 'none',
         },
     },
-
-
     link: {
         margin: theme.spacing(1, 1.5),
     },
@@ -103,6 +86,8 @@ export default function Pricing() {
     const { user } = useContext(UserContext)
     // need to init useHistory..
     let history = useHistory();
+
+
     console.log(user)
     async function handleFormSubmit({ title, price, id, description }) {
         if (!cart.location) {
@@ -136,7 +121,6 @@ export default function Pricing() {
 
             </Container>
             {/* End hero unit */}
-
 
             <Container maxWidth="md" component="main" >
                 <Grid container spacing={5} alignItems="flex-end">

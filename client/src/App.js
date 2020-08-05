@@ -12,7 +12,8 @@ import LandingPage from './pages/LandingPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CheckoutRouter from './pages/CheckoutRouter';
 import { createMuiTheme } from '@material-ui/core/styles';
-import Team from './pages/Team'
+import Team from './pages/Team';
+import Validator from './pages/Validator';
 
 function App() {
 
@@ -57,6 +58,10 @@ function App() {
               </Route>
               <Route exact path="/team">
                 <Team />
+              </Route>
+              {/* Need this route to expect a search params */}
+              <Route path="/check">
+                <Validator />
               </Route>
             </Switch>
           </TransactionContext.Provider>

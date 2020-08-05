@@ -1,12 +1,12 @@
 import axios from "axios";
 
 export default {
-    // Gets all books
-    //   getBooks: function() {
-    //     return axios.get("/api/books");
-    //   },
+
+    getTagById: function (id) {
+        return axios.get(`/api/tags/${id}`);
+    },
     findUserId: function (id) {
-        return axios.get("/api/user/" + id);
+        return axios.get(`/api/user/${id}`);
     },
     // Deletes the book with the given id
     //   deleteBook: function(id) {

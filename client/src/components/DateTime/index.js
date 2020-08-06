@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Moment from 'react-moment';
-import Typography from '@material-ui/core/Typography';
 
 export default function DateTime() {
     const [time, setTime] = useState({})
@@ -24,9 +23,9 @@ export default function DateTime() {
 
     return (
         <div>
-            <Typography variant="h4" align="center" color="textSecondary" component="p"><Moment format="DD/MM/YY">{time.time}</Moment></Typography>
+            <h2><Moment format="DD/MM/YY">{time.time}</Moment></h2>
             {/* < h2 > <span>{time.hour}</span>:<span>{time.minutes}</span></h2 > */}
-            <Typography variant="h4" align="center" color="textSecondary" component="p"><Moment format="HH:mm">{time.time}</Moment></Typography>
+            <h2><Moment format="HH:mm">{time.time}</Moment></h2>
 
         </div>
 

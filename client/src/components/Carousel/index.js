@@ -20,8 +20,8 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         alignItems: 'center',
         height: 50,
-        paddingLeft: theme.spacing(12),
-        backgroundColor: theme.palette.type === 'light' ? theme.palette.info.light : theme.palette.info.light,
+        paddingLeft: theme.spacing(4),
+        backgroundColor: theme.palette.background.default,
     },
     img: {
         maxHeight: '20em',
@@ -51,43 +51,41 @@ function QRCarousel(props) {
     return (
         <div className={classes.root}>
             <Paper square elevation={0} className={classes.header}>
-                <Typography component="h1" variant="h6" align="center" color="textPrimary" gutterBottom>{props.tags[activeStep].name}</Typography>
+                <Typography>{props.tags[activeStep].name}</Typography>
             </Paper>
-            <Paper>
-                <SwipeableViews
-                    axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-                    index={activeStep}
-                    onChangeIndex={handleStepChange}
-                    enableMouseEvents
-                >
-                    {props.tags.map((tag, index) => (
-                        <div key={tag._id}>
-                            {Math.abs(activeStep - index) <= 2 ? (
-                                // Updated url to /check?
-                                <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/check?${tag._id}`} alt={tag.name} />
-                            ) : null}
-                        </div>
-                    ))}
-                </SwipeableViews>
-                <MobileStepper
-                    steps={maxSteps}
-                    position="static"
-                    variant="text"
-                    activeStep={activeStep}
-                    nextButton={
-                        <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
-                            Next
+            <SwipeableViews
+                axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+                index={activeStep}
+                onChangeIndex={handleStepChange}
+                enableMouseEvents
+            >
+                {props.tags.map((tag, index) => (
+                    <div key={tag._id}>
+                        {Math.abs(activeStep - index) <= 2 ? (
+                            // Updated url to /check?
+                            <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/check?${tag._id}`} alt={tag.name} />
+                        ) : null}
+                    </div>
+                ))}
+            </SwipeableViews>
+            <MobileStepper
+                steps={maxSteps}
+                position="static"
+                variant="text"
+                activeStep={activeStep}
+                nextButton={
+                    <Button size="small" onClick={handleNext} disabled={activeStep === maxSteps - 1}>
+                        Next
             {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
-                        </Button>
-                    }
-                    backButton={
-                        <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                            {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+                    </Button>
+                }
+                backButton={
+                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
+                        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
             Back
           </Button>
-                    }
-                />
-            </Paper>
+                }
+            />
         </div>
     );
 }

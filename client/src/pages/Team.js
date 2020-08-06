@@ -51,11 +51,11 @@ export default function EmployeeCards() {
     function FormRow() {
         return (
             <React.Fragment>
-                <Grid item xs={6} spacing={2}>
+                <Grid item>
                     <CardActionArea component="a" href="https://github.com/ejlopez44" target="blank">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={Tito} />
+                                <img style={{ paddingTop: '10px' }} className={classes.img} alt="complex" src={Tito} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Tito Lopez
@@ -71,11 +71,11 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item>
                     <CardActionArea component="a" href="https://github.com/ksmera01" target="blank">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={Kevin} />
+                                <img style={{ paddingTop: '10px' }} className={classes.img} alt="complex" src={Kevin} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Kevin Smeraglio
@@ -94,11 +94,18 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-                <Grid item xs={6}>
+            </React.Fragment>
+        );
+    };
+
+    function FormRow2() {
+        return (
+            <React.Fragment>
+                <Grid item>
                     <CardActionArea component="a" href="https://github.com/kaito47" target="blank">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={Kait} />
+                                <img style={{ paddingTop: '10px' }} className={classes.img} alt="complex" src={Kait} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Kaitlin O'Shaughnessy
@@ -117,11 +124,11 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item>
                     <CardActionArea component="a" href="https://github.com/TLGeorge" target="blank">
                         <Card>
                             <div>
-                                <img className={classes.img} alt="complex" src={Taneisha} />
+                                <img style={{ paddingTop: '10px' }} className={classes.img} alt="complex" src={Taneisha} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Taneisha George
@@ -141,15 +148,18 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
             </React.Fragment>
-        );
+        )
     }
 
     return (
         <div style={{ paddingTop: '75px' }}>
             <h1 style={{ textAlign: 'center', fontFamily: 'Playfair Display SC' }}>Shore Pass Team</h1>
-            <Grid container spacing={4}>
+            <Grid container xs={12} sm={6} md={5} spacing={4}>
                 <Grid container item xs={12} spacing={3}>
                     <FormRow />
+                </Grid>
+                <Grid container item xs={12} spacing={3}>
+                    <FormRow2 />
                 </Grid>
             </Grid>
         </div>

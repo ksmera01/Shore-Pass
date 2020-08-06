@@ -11,11 +11,11 @@ import Transaction from './pages/Transaction';
 import LandingPage from './pages/LandingPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import CheckoutRouter from './pages/CheckoutRouter';
-import { createMuiTheme } from '@material-ui/core/styles';
 import Validator from './pages/Validator';
 import Team from './pages/Team'
 import Account from './pages/Account';
 import API from './utils/API'
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 
 function App() {
@@ -47,49 +47,51 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <UserContext.Provider value={userData}>
-          <TransactionContext.Provider value={transactionData}>
-            <Nav />
-            <Switch>
-              <Route exact path="/">
-                <LandingPage />
-              </Route>
-              <Route exact path="/pricing">
-                <Pricing />
-              </Route>
-              <Route exact path="/transaction">
-                <Transaction />
-              </Route>
-              <Route exact path="/dashboard" >
-                <Dashboard />
-              </Route>
-              <Route exact path="/login">
-                <SignIn />
-              </Route>
-              <Route exact path="/sign-up">
-                <SignUp />
-              </Route>
-              <Route exact path="/checkout">
-                <CheckoutRouter />
-              </Route>
-              <Route exact path="/privacypolicy">
-                <PrivacyPolicy />
-              </Route>
-              <Route exact path="/team">
-                <Team />
-              </Route>
-              {/* Need this route to expect a search params */}
-              <Route path="/check">
-                <Validator />
-              </Route>
-              <Route exact path="/account">
-                <Account />
-              </Route>
-            </Switch>
-          </TransactionContext.Provider>
-        </UserContext.Provider>
-      </div>
+      <ScrollToTop>
+        <div>
+          <UserContext.Provider value={userData}>
+            <TransactionContext.Provider value={transactionData}>
+              <Nav />
+              <Switch>
+                <Route exact path="/">
+                  <LandingPage />
+                </Route>
+                <Route exact path="/pricing">
+                  <Pricing />
+                </Route>
+                <Route exact path="/transaction">
+                  <Transaction />
+                </Route>
+                <Route exact path="/dashboard" >
+                  <Dashboard />
+                </Route>
+                <Route exact path="/login">
+                  <SignIn />
+                </Route>
+                <Route exact path="/sign-up">
+                  <SignUp />
+                </Route>
+                <Route exact path="/checkout">
+                  <CheckoutRouter />
+                </Route>
+                <Route exact path="/privacypolicy">
+                  <PrivacyPolicy />
+                </Route>
+                <Route exact path="/team">
+                  <Team />
+                </Route>
+                {/* Need this route to expect a search params */}
+                <Route path="/check">
+                  <Validator />
+                </Route>
+                <Route exact path="/account">
+                  <Account />
+                </Route>
+              </Switch>
+            </TransactionContext.Provider>
+          </UserContext.Provider>
+        </div>
+      </ScrollToTop>
     </Router>
   );
 }

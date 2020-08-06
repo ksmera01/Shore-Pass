@@ -162,7 +162,7 @@ export default function myAccount() {
                             // onChange={handleInputChange}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        {/* <Grid item xs={12}>
                             <TextField
                                 variant="outlined"
                                 fullWidth
@@ -174,9 +174,9 @@ export default function myAccount() {
                                 value="{user.password}"
                             // onChange={handleInputChange}
                             />
-                        </Grid>
+                        </Grid> */}
                     </Grid>
-                    <Button
+                    {/* <Button
                         type="submit"
                         fullWidth
                         variant="contained"
@@ -186,7 +186,7 @@ export default function myAccount() {
                         style={{ background: '#43c8c5' }}
                     >
                         Update My Information
-          </Button>
+          </Button> */}
                 </form>
             </div>
             <Box mt={5}>

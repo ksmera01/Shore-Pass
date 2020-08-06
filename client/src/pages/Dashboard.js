@@ -44,6 +44,7 @@ function Dashboard() {
     // const { user, setUser } = useContext(UserContext)
     // EVENTUALLY REWORKING THIS FUNCTIONALITY INTO CONTEXT PROVIDER ON APP
     const [user, setUser] = useState({})
+    const [activeTags, setActiveTags] = useState([])
     // need to init useHistory..
     let history = useHistory();
     const classes = useStyles();
@@ -58,6 +59,8 @@ function Dashboard() {
             API.findUserId(userId)
                 .then(res => {
                     console.log(res.data)
+                    let parsedTags = res.data.tags.filter(tag => Date.parse(tag.expirationDate) > Date.now());
+                    setActiveTags(parsedTags)
                     // console.log(res.data.tags[0].location)
                     setUser(res.data)
                 })
@@ -99,7 +102,7 @@ function Dashboard() {
                         </Grid>
                         <Grid item xs={12} align="center">
                             {user.tags[0] ?
-                                <QRCarousel tags={user.tags} /> :
+                                <QRCarousel tags={activeTags} /> :
                                 <div>
                                     <h5>Looks like you don't have any active tags...</h5>
                                     <Link to="/pricing">Click here to get one</Link>

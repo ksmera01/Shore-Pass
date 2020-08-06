@@ -23,7 +23,7 @@ export default function DateTime() {
 
     return (
         <div>
-            <h2><Moment format="DD/MM/YY">{time.time}</Moment></h2>
+            <h2><Moment format="MM/DD/YY">{time.time}</Moment></h2>
             {/* < h2 > <span>{time.hour}</span>:<span>{time.minutes}</span></h2 > */}
             <h2><Moment format="h:mm A">{time.time}</Moment></h2>
 

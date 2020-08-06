@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { TransactionContext } from '../context/TransactionContext';
+import { UserContext } from '../context/UserContext'
 import { useHistory } from "react-router-dom";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -12,22 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
 import Location from '../components/Location';
-
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Shore Pass
-      </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
+import Footer from '../components/Footer/footer';
 
 const useStyles = makeStyles((theme) => ({
     '@global': {
@@ -37,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
             listStyle: 'none',
         },
     },
-
-
     link: {
         margin: theme.spacing(1, 1.5),
     },
@@ -93,38 +78,28 @@ const tiers = [
         buttonVariant: 'outlined',
     },
 ];
-const footers = [
-    {
-        title: 'Company',
-        description: ['Team', 'History', 'Contact us', 'Locations'],
-    },
-    {
-        title: 'Features',
-        description: ['Cool stuff', 'Random feature', 'Team feature', 'Developer stuff', 'Another one'],
-    },
-    {
-        title: 'Resources',
-        description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
-    },
-    {
-        title: 'Legal',
-        description: ['Privacy policy', 'Terms of use'],
-    },
-];
+
 
 export default function Pricing() {
     const classes = useStyles();
     const { cart, setCart } = useContext(TransactionContext)
+    const { user } = useContext(UserContext)
     // need to init useHistory..
     let history = useHistory();
 
+
+    console.log(user)
     async function handleFormSubmit({ title, price, id, description }) {
         if (!cart.location) {
             return alert('You must select a beach location')
         }
         console.log(cart);
         await setCart({ ...cart, title, price, id, description })
-        history.push("/transaction");
+        if (user._id) {
+            history.push("/transaction")
+        } else {
+            history.push('/checkout')
+        }
     };
 
     return (
@@ -146,7 +121,6 @@ export default function Pricing() {
 
             </Container>
             {/* End hero unit */}
-
 
             <Container maxWidth="md" component="main" >
                 <Grid container spacing={5} alignItems="flex-end">
@@ -191,29 +165,7 @@ export default function Pricing() {
                 </Grid>
             </Container>
             {/* Footer */}
-            <Container maxWidth="md" component="footer" className={classes.footer}>
-                <Grid container spacing={4} justify="space-evenly">
-                    {footers.map((footer) => (
-                        <Grid item xs={6} sm={3} key={footer.title}>
-                            <Typography variant="h6" color="textPrimary" gutterBottom>
-                                {footer.title}
-                            </Typography>
-                            <ul>
-                                {footer.description.map((item) => (
-                                    <li key={item}>
-                                        <Link to="#" variant="subtitle1" color="textSecondary">
-                                            {item}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </Grid>
-                    ))}
-                </Grid>
-                <Box mt={5}>
-                    <Copyright />
-                </Box>
-            </Container>
+            <Footer />
             {/* End footer */}
         </React.Fragment>
     );

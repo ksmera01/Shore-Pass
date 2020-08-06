@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 import Copyright from '../Copyright'
 
+
 const useStyles = makeStyles((theme) => ({
     '@global': {
         ul: {
@@ -48,19 +49,50 @@ const useStyles = makeStyles((theme) => ({
 const footers = [
     {
         title: 'Shore Pass',
-        description: ['Team', 'History', 'Contact us', 'Locations'],
-    },
-    {
-        title: 'Pricing',
-        description: ['Cool stuff', 'Random feature', 'Team feature', 'Developer stuff', 'Another one'],
+        description: [
+            {
+                linkText: 'Team',
+                linkRoute: '/team'
+            },
+            {
+                linkText: 'History',
+                linkRoute: '',
+            },
+            {
+                linkText: 'Contact us',
+                linkRoute: '',
+            },
+        ],
     },
     {
         title: 'Resources',
-        description: ['Resource', 'Resource name', 'Another resource', 'Final resource'],
+        description: [
+            {
+                linkText: 'Resource',
+                linkRoute: ''
+            },
+            {
+                linkText: 'Resource name',
+                linkRoute: '',
+            },
+            {
+                linkText: 'Final resource',
+                linkRoute: '',
+            }
+        ],
     },
     {
         title: 'Legal',
-        description: ['Privacy policy', 'Terms of use'],
+        description: [
+            {
+                linkText: 'Privacy policy',
+                linkRoute: '/privacypolicy'
+            },
+            {
+                linkText: 'Terms of use',
+                linkRoute: ''
+            }
+        ],
     },
 ];
 
@@ -77,10 +109,12 @@ export default function Footer() {
                         </Typography>
                         <ul>
                             {footer.description.map((item) => (
-                                <li key={item}>
-                                    <Link to="#" variant="subtitle1" color="textSecondary">
-                                        {item}
+                                <li key={item.linkText}>
+
+                                    <Link children={item.linkText} href={item.linkRoute} variant="subtitle1" color="textSecondary">
+
                                     </Link>
+
                                 </li>
                             ))}
                         </ul>

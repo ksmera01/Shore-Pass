@@ -1,5 +1,7 @@
-import React, { useContext } from 'react';
-import { TransactionContext } from '../context/TransactionContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { TransactionContext } from '../context/TransactionContext';
+import { UserContext } from '../context/UserContext';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -13,6 +15,7 @@ import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
 import API from '../utils/API';
+import Grid from '@material-ui/core/Grid';
 
 function Copyright() {
     return (
@@ -62,6 +65,16 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
     },
+    returnHome: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
+    img: {
+        maxHeight: '20em',
+        display: 'block',
+        maxWidth: '20em',
+        overflow: 'hidden',
+    },
 }));
 
 const steps = ['Billing address', 'Payment details', 'Review your order'];
@@ -81,11 +94,13 @@ function getStepContent(step) {
 
 export default function Transaction() {
     const { cart } = useContext(TransactionContext)
-
+    const { user } = useContext(UserContext)
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
+    const [confirmation, setConfirmation] = useState()
 
     const handleNext = async () => {
+        // Less than ideal way to validate if all fields are completed on billing form
         if (activeStep === 0) {
             if (cart.firstName && cart.lastName && cart.state && cart.zip && cart.city && cart.address1) {
                 return setActiveStep(activeStep + 1);
@@ -93,6 +108,7 @@ export default function Transaction() {
                 return alert('Please fill in all required fields')
             }
         }
+        // Less than ideal way to validate if all fields are completed on payment form
         if (activeStep === 1) {
             if (cart.cardType && cart.cardHolder && cart.cc && cart.cvv && cart.expDate) {
                 return setActiveStep(activeStep + 1);
@@ -100,11 +116,20 @@ export default function Transaction() {
                 return alert('Please fill in all required fields')
             }
         }
+        // Check if its the step before the final confirmation page step and post the transaction, route the user according to success or failure
         if (activeStep === steps.length - 1) {
             await API.placeOrder(cart)
-                .then(res => console.log(res.data))
+                .then(res => {
+                    console.log(res.data)
+                    setConfirmation(res.data)
+                    setActiveStep(activeStep + 1);
+                })
+                .catch(err => {
+                    console.log(err)
+                    alert('There has been an error placing your order, please start over');
+                    return window.location.href = '/pricing'
+                })
         }
-        setActiveStep(activeStep + 1);
     };
 
     const handleBack = () => {
@@ -129,13 +154,29 @@ export default function Transaction() {
                     <React.Fragment>
                         {activeStep === steps.length ? (
                             <React.Fragment>
-                                <Typography variant="h5" gutterBottom>
-                                    Thank you for your order.
+                                <Grid container direction="column"
+                                    justify="center"
+                                    alignItems="center" spacing={1}>
+
+                                    <Grid item xs={12}>
+                                        <Typography variant="h5" gutterBottom>
+                                            Thank you for your order.
                 </Typography>
-                                <Typography variant="subtitle1">
-                                    Your order is confirmed. We have emailed your order confirmation.
-                                    <Button href="/dashboard" className={classes.buttons} style={{ background: '#43c8c5' }} >Return Home</Button>
-                                </Typography>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        {confirmation._id &&
+                                            <Paper>
+                                                <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/check?${confirmation._id}`} alt={`QR code: ${confirmation.name}`} />
+                                            </Paper>
+                                        }
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Typography variant="subtitle1">
+                                            Your order is confirmed. We have emailed your order confirmation.
+                                    <Button href="/dashboard" className={classes.returnHome} style={{ background: '#43c8c5', textAlign: 'center' }} >Go To Dashboard</Button>
+                                        </Typography>
+                                    </Grid>
+                                </Grid>
                             </React.Fragment>
                         ) : (
                                 <React.Fragment>

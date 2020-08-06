@@ -13,11 +13,7 @@ module.exports = {
         db.Tag
             .findById(req.params.id)
             .then(dbModel => {
-                if (dbModel.expirationDate < Date.now()) {
-                    res.status(200).send('EXPIRED')
-                } else {
-                    res.status(200).json(dbModel)
-                };
+                res.status(200).json(dbModel)
             })
             // res.json(dbModel))
             .catch(err => res.status(422).json(err));
@@ -41,6 +37,15 @@ module.exports = {
             .then(({ _id }) => db.User.findByIdAndUpdate(req.params.id, { $push: { tags: _id } }, { new: true }))
             .then(dbUser => {
                 res.json(dbUser);
+            })
+            .catch(err => {
+                res.json(err);
+            });
+    },
+    createGuest: function (req, res) {
+        db.Tag.create(req.body)
+            .then(tag => {
+                res.json(tag);
             })
             .catch(err => {
                 res.json(err);

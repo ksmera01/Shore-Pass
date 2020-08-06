@@ -62,7 +62,8 @@ function QRCarousel(props) {
                 {props.tags.map((tag, index) => (
                     <div key={tag._id}>
                         {Math.abs(activeStep - index) <= 2 ? (
-                            <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/api/tags/${tag._id}`} alt={tag.name} />
+                            // Updated url to /check?
+                            <img className={classes.img} src={`https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl=https://shore-pass.herokuapp.com/check?${tag._id}`} alt={tag.name} />
                         ) : null}
                     </div>
                 ))}

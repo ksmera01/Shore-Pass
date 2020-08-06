@@ -65,6 +65,10 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
         marginLeft: theme.spacing(1),
     },
+    returnHome: {
+        display: 'flex',
+        justifyContent: 'center'
+    },
     img: {
         maxHeight: '20em',
         display: 'block',
@@ -169,7 +173,7 @@ export default function Transaction() {
                                     <Grid item xs={12}>
                                         <Typography variant="subtitle1">
                                             Your order is confirmed. We have emailed your order confirmation.
-                                    <Button href="/dashboard" className={classes.buttons} style={{ background: '#43c8c5' }} >Return Home</Button>
+                                    <Button href="/dashboard" className={classes.returnHome} style={{ background: '#43c8c5', textAlign: 'center' }} >Go To Dashboard</Button>
                                         </Typography>
                                     </Grid>
                                 </Grid>

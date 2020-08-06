@@ -19,9 +19,10 @@ const useStyles = makeStyles((theme) => ({
     header: {
         display: 'flex',
         alignItems: 'center',
+        textAlign: 'center',
         height: 50,
         paddingLeft: theme.spacing(4),
-        backgroundColor: theme.palette.background.default,
+        backgroundColor: '#43c8c5',
     },
     img: {
         maxHeight: '20em',

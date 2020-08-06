@@ -15,8 +15,8 @@ import { Link, useHistory } from 'react-router-dom'
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 import QRCarousel from '../components/Carousel';
-import BeachForecast from '../components/BeachForecast';
-import WeatherCard from '../components/WeatherCard';
+// import BeachForecast from '../components/BeachForecast';
+// import WeatherCard from '../components/WeatherCard';
 // import Location from '../components/Location';
 
 const useStyles = makeStyles((theme) => ({
@@ -79,13 +79,13 @@ function Dashboard() {
         return (
 
             <div className={classes.root}>
-                <Container maxWidth="lg" className={classes.container} style={{ paddingTop: '100px' }}>
+                <Container maxWidth="lg" className={classes.container} style={{ paddingTop: '60px' }}>
                     <Grid container spacing={3}>
                         {/* Chart */}
-                        <Grid item xs={12} md={12} lg={12}>
+                        <Grid item xs={12} md={12} lg={12} style={{ textAlign: 'center', fontFamily: 'Playfair Display SC' }}>
                             {/* <Paper className={fixedHeightPaper}> */}
                             {/* <h2>Hey {user.name}</h2> */}
-                            <h1>Hello {user.firstName} {user.lastName}</h1>
+                            <h1 >Hello {user.firstName} {user.lastName}</h1>
                             {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
                             <DateTime />
                             {/* <h5>{Moment.format('ll')}</h5>
@@ -94,8 +94,8 @@ function Dashboard() {
                             {/* </Paper> */}
                         </Grid>
                         {/* Recent Deposits */}
-                        <Grid item xs={12} align="center">
-                            <h2>Your Tags</h2>
+                        <Grid item xs={12} align="center" style={{ fontFamily: 'Playfair Display SC', fontWeight: 'bold' }} >
+                            <h2 style={{ border: 'solid', background: '#dcbb8e' }}>Your Tags:</h2>
                         </Grid>
                         <Grid item xs={12} align="center">
                             {user.tags[0] ?
@@ -104,39 +104,7 @@ function Dashboard() {
                                     <h5>Looks like you don't have any active tags...</h5>
                                     <Link to="/pricing">Click here to get one</Link>
                                 </div>
-
                             }
-
-                        </Grid>
-                        {/* Recent Orders */}
-                        <Grid item xs={12} align="center">
-                            {/* <Location/> */}
-                            <h2>Shore Stats</h2>
-                            <WeatherCard/>
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Paper className={classes.paper} align="center">
-                                7-Day Forecast
-                              
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper} align="center">
-                                Wind Direction
-                                {/* <Orders /> */}
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper} align="center">
-                                Wave Height
-                                {/* <Orders /> */}
-                            </Paper>
-                        </Grid>
-                        <Grid item xs={4}>
-                            <Paper className={classes.paper} align="center">
-                                Water Temp
-                                {/* <Orders /> */}
-                            </Paper>
                         </Grid>
                     </Grid>
                     <Box pt={4}>

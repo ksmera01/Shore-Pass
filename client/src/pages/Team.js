@@ -7,8 +7,6 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
 import Kevin from '../Media/kevin.jpeg'
 import Tito from '../Media/tito.png'
 import Taneisha from '../Media/taneisha.jpeg'
@@ -23,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
     cardDetails: {
         flex: 1,
+
     },
     cardMedia: {
         width: 160,
@@ -43,6 +42,11 @@ const useStyles = makeStyles((theme) => ({
         maxHeight: '70%',
         borderRadius: '50%'
     },
+    Grid: {
+        direction: "row",
+        justify: "center",
+        alignItems: "center"
+    }
 }));
 
 export default function EmployeeCards() {
@@ -51,7 +55,7 @@ export default function EmployeeCards() {
     function FormRow() {
         return (
             <React.Fragment>
-                <Grid item>
+                <Grid item md={6}>
                     <CardActionArea component="a" href="https://github.com/ejlopez44" target="blank">
                         <Card>
                             <div>
@@ -71,7 +75,7 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-                <Grid item>
+                <Grid item md={6}>
                     <CardActionArea component="a" href="https://github.com/ksmera01" target="blank">
                         <Card>
                             <div>
@@ -94,18 +98,11 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-            </React.Fragment>
-        );
-    };
-
-    function FormRow2() {
-        return (
-            <React.Fragment>
-                <Grid item>
+                <Grid item md={6}>
                     <CardActionArea component="a" href="https://github.com/kaito47" target="blank">
                         <Card>
                             <div>
-                                <img style={{ paddingTop: '10px' }} className={classes.img} alt="complex" src={Kait} />
+                                <img style={{ paddingTop: '10px', paddingBottom: '5px' }} className={classes.img} alt="complex" src={Kait} />
                                 <CardContent>
                                     <Typography component="h2" variant="h5">
                                         Kaitlin O'Shaughnessy
@@ -114,7 +111,7 @@ export default function EmployeeCards() {
                                         Click card for GitHub!
                             </Typography>
                                     <Typography variant="subtitle1" paragraph>
-                                        Currently I'm a junior full stack developer in the process of completing UPenn's LPS Boot Camp.
+                                        Currently I'm a junior full stack developer in the process of completing UPenn's LPS Boot Camp. Excited to build stuff with you!
                             </Typography>
                                 </CardContent>
                             </div>
@@ -124,7 +121,7 @@ export default function EmployeeCards() {
                         </Card>
                     </CardActionArea>
                 </Grid>
-                <Grid item>
+                <Grid item md={6}>
                     <CardActionArea component="a" href="https://github.com/TLGeorge" target="blank">
                         <Card>
                             <div>
@@ -148,18 +145,15 @@ export default function EmployeeCards() {
                     </CardActionArea>
                 </Grid>
             </React.Fragment>
-        )
-    }
+        );
+    };
 
     return (
-        <div style={{ paddingTop: '75px' }}>
+        <div style={{ paddingTop: '75px', paddingLeft: '20px' }}>
             <h1 style={{ textAlign: 'center', fontFamily: 'Playfair Display SC' }}>Shore Pass Team</h1>
-            <Grid container xs={12} sm={6} md={5} spacing={4}>
+            <Grid className={classes.Grid} container xs={12} sm={12} md={8}>
                 <Grid container item xs={12} spacing={3}>
                     <FormRow />
-                </Grid>
-                <Grid container item xs={12} spacing={3}>
-                    <FormRow2 />
                 </Grid>
             </Grid>
         </div>

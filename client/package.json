@@ -9,10 +9,12 @@
     "axios": "^0.18.1",
     "express": "^4.17.1",
     "fontsource-roboto": "^2.2.6",
+    "moment": "^2.27.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-event-listener": "^0.6.6",
     "react-items-carousel": "^2.8.0",
+    "react-moment": "^0.9.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^2.1.1",
     "react-swipeable-views": "^0.13.9"

@@ -32,38 +32,38 @@ const useStyles = makeStyles({
     //     marginTop: theme.spacing(2),
     // },
 });
-export default function WeatherCard(props) {
+export default function WeatherCard() {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
     const [query, setQuery] = useState({})
     const [weather, setWeather] = useState({})
     // Using props from the parent component/page we can gain access to the tagObject state and setTagObject function
+
+    async function openWeatherAPI(location) {
+        let apiKey = "0317fb4213a3eb33ceb4cf432a4f0cab"
+        let queryURL = `api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`
+        console.log(queryURL)
+        //     url: queryURL,
+        //     method: "GET"
+        // })
+        //     .then(function (response) {
+        //         console.log(response)
+        //         // var dailyArray = response.daily
+        //         console.log(dailyArray)
+        //         FOR USESTATE setWeather(response.daily);
+        await axios.get(queryURL).then(function (response) {
+            console.log(response)
+        });
+    }
+
     const handleChange = (event) => {
+
         //updates tagObject to what was entered in input field (onChange)
         const name = event.target.name;
-        setQuery(name);
-        openWeatherAPI(name);
+        setQuery(name)
+        // openWeatherAPI(name);
 
-
-
-
-        async function openWeatherAPI(props) {
-            let apiKey = "0317fb4213a3eb33ceb4cf432a4f0cab"
-            let queryURL = `api.openweathermap.org/data/2.5/weather?q=${props.location}&appid=${apiKey} `
-            // console.log(queryURL)
-            //     url: queryURL,
-            //     method: "GET"
-            // })
-            //     .then(function (response) {
-            //         console.log(response)
-            //         // var dailyArray = response.daily
-            //         console.log(dailyArray)
-            //         FOR USESTATE setWeather(response.daily);
-            await axios.get(queryURL).then(function (response) {
-                console.log(response)
-            });
-        }
     }
     // });
     // }
@@ -74,7 +74,7 @@ export default function WeatherCard(props) {
                     <InputLabel htmlFor="age-native-simple">Select Beach</InputLabel>
                     <Select
                         native
-                        value={props.location}
+                        value={query}
                         onChange={handleChange}
                         inputProps={{
                             name: 'location',

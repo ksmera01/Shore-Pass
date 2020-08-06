@@ -6,11 +6,13 @@
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
+    "express": "^4.17.1",
     "fontsource-roboto": "^2.2.6",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-event-listener": "^0.6.6",
+    "react-items-carousel": "^2.8.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^2.1.1",
     "react-swipeable-views": "^0.13.9"

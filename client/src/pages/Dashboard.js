@@ -15,6 +15,8 @@ import { Link, useHistory } from 'react-router-dom'
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 import QRCarousel from '../components/Carousel';
+import BeachForecast from '../components/BeachForecast';
+// import Location from '../components/Location';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -106,12 +108,14 @@ function Dashboard() {
                         </Grid>
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">
+                            {/* <Location/> */}
                             <h2>Shore Stats</h2>
+                            <BeachForecast/>
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={classes.paper} align="center">
                                 7-Day Forecast
-                                {/* <Orders /> */}
+                              
                             </Paper>
                         </Grid>
                         <Grid item xs={4}>

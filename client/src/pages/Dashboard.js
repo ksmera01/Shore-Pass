@@ -15,11 +15,9 @@ import { Link, useHistory } from 'react-router-dom'
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 import QRCarousel from '../components/Carousel';
-// import BeachForecast from '../components/BeachForecast';
+import BeachForecast from '../components/BeachForecast';
 import WeatherCard from '../components/WeatherCard';
-import { Typography } from '@material-ui/core';
 // import Location from '../components/Location';
-
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -84,20 +82,24 @@ function Dashboard() {
                 <Container maxWidth="lg" className={classes.container} style={{ paddingTop: '100px' }}>
                     <Grid container spacing={3}>
                         {/* Chart */}
-                        <Grid item xs={12} md={12} lg={12} align="center">
-                            <Paper className={fixedHeightPaper}>
-                                <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Hi {user.firstName} {user.lastName}!</Typography>
-                                {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
-                                <DateTime />
-                            </Paper>
+                        <Grid item xs={12} md={12} lg={12}>
+                            {/* <Paper className={fixedHeightPaper}> */}
+                            {/* <h2>Hey {user.name}</h2> */}
+                            <h1>Hello {user.firstName} {user.lastName}</h1>
+                            {/* FOR THE FOLLOWING TO WORK NEED TO NPM INSTALL MOMENT */}
+                            <DateTime />
+                            {/* <h5>{Moment.format('ll')}</h5>
+                            <h5>{Moment.format('LT')}</h5> */}
+                            {/* <Chart /> */}
+                            {/* </Paper> */}
                         </Grid>
                         {/* Recent Deposits */}
                         <Grid item xs={12} align="center">
-                            <Typography component="h1" variant="h4" align="center" color="textPrimary" gutterBottom>Your Tags</Typography>
+                            <h2>Your Tags</h2>
                         </Grid>
                         <Grid item xs={12} align="center">
                             {user.tags[0] ?
-                                <QRCarousel tags={user.tags} align="center" /> :
+                                <QRCarousel tags={user.tags} /> :
                                 <div>
                                     <h5>Looks like you don't have any active tags...</h5>
                                     <Link to="/pricing">Click here to get one</Link>
@@ -109,36 +111,33 @@ function Dashboard() {
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">
                             {/* <Location/> */}
-
-                            <Typography variant="h5" align="center" color="textPrimary" component="p">Select a Beach & View the Current Weather:</Typography>
-
-                            <WeatherCard />
-
+                            <h2>Shore Stats</h2>
+                            <WeatherCard/>
                         </Grid>
-                        {/* <Grid item xs={12}>
+                        <Grid item xs={12}>
                             <Paper className={classes.paper} align="center">
                                 7-Day Forecast
                               
                             </Paper>
-                        </Grid> */}
-                        {/* <Grid item xs={4}>
+                        </Grid>
+                        <Grid item xs={4}>
                             <Paper className={classes.paper} align="center">
                                 Wind Direction
-                            
+                                {/* <Orders /> */}
                             </Paper>
                         </Grid>
                         <Grid item xs={4}>
                             <Paper className={classes.paper} align="center">
                                 Wave Height
-                          
+                                {/* <Orders /> */}
                             </Paper>
                         </Grid>
                         <Grid item xs={4}>
                             <Paper className={classes.paper} align="center">
                                 Water Temp
-                              
+                                {/* <Orders /> */}
                             </Paper>
-                        </Grid> */}
+                        </Grid>
                     </Grid>
                     <Box pt={4}>
                         <Copyright />

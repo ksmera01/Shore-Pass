@@ -15,6 +15,9 @@ import { Link, useHistory } from 'react-router-dom'
 import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 import QRCarousel from '../components/Carousel';
+import BeachForecast from '../components/BeachForecast';
+import WeatherCard from '../components/WeatherCard';
+// import Location from '../components/Location';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -55,6 +58,7 @@ function Dashboard() {
             API.findUserId(userId)
                 .then(res => {
                     console.log(res.data)
+                    // console.log(res.data.tags[0].location)
                     setUser(res.data)
                 })
                 .catch(err => console.log(err));
@@ -106,12 +110,14 @@ function Dashboard() {
                         </Grid>
                         {/* Recent Orders */}
                         <Grid item xs={12} align="center">
+                            {/* <Location/> */}
                             <h2>Shore Stats</h2>
+                            <WeatherCard/>
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={classes.paper} align="center">
                                 7-Day Forecast
-                                {/* <Orders /> */}
+                              
                             </Paper>
                         </Grid>
                         <Grid item xs={4}>

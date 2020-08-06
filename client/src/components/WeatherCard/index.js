@@ -7,7 +7,13 @@ import axios from 'axios';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-import BeachForecast from '../BeachForecast';
+// import BeachForecast from '../BeachForecast';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+
 
 const useStyles = makeStyles({
     root: {
@@ -36,13 +42,16 @@ export default function WeatherCard() {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
 
-    const [query, setQuery] = useState({})
+
     const [weather, setWeather] = useState({})
     // Using props from the parent component/page we can gain access to the tagObject state and setTagObject function
 
-    async function openWeatherAPI(location) {
+    async function openWeatherAPI(beach) {
         let apiKey = "0317fb4213a3eb33ceb4cf432a4f0cab"
-        let queryURL = `api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}`
+        //for5day/3hrForecast
+        // let queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${beach}&appid=${apiKey}`
+        //forDayForecast
+        let queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${beach}&appid=${apiKey}`
         console.log(queryURL)
         //     url: queryURL,
         //     method: "GET"
@@ -54,15 +63,30 @@ export default function WeatherCard() {
         //         FOR USESTATE setWeather(response.daily);
         await axios.get(queryURL).then(function (response) {
             console.log(response)
+            // let forecastArray = []
+            // if (response.data.list) {
+            //     for (let i = 0; i < 50; i + 8) {
+
+            //         forecastArray.push(response.data.list[i])
+            //     }
+            // }
+            // console.log(forecastArray);
+            setWeather(response.data)
+            console.log(response.data.main.temp)
+            if (response.data) {
+                console.log(weather)
+            }
         });
+
     }
 
     const handleChange = (event) => {
 
         //updates tagObject to what was entered in input field (onChange)
-        const name = event.target.name;
-        setQuery(name)
+        const beach = event.target.value;
         // openWeatherAPI(name);
+        console.log(beach)
+        openWeatherAPI(beach);
 
     }
     // });
@@ -74,7 +98,7 @@ export default function WeatherCard() {
                     <InputLabel htmlFor="age-native-simple">Select Beach</InputLabel>
                     <Select
                         native
-                        value={query}
+                        // value={}
                         onChange={handleChange}
                         inputProps={{
                             name: 'location',
@@ -100,10 +124,37 @@ export default function WeatherCard() {
                 </FormControl>
 
             </div>
-            <BeachForecast />
-            <div>
-                <Card className='weather'>
-                    {/* <CardContent>
+            <Grid item xs={3} align="center">
+                <Card className="weatherDiv">
+                    <CardActionArea>
+                        <CardContent>
+                            <CardMedia
+                                component="img"
+                                alt="Contemplative Reptile"
+                                height="140"
+                                image="/static/images/cards/contemplative-reptile.jpg"
+                                title="Contemplative Reptile"
+                            />
+                            <Typography gutterBottom variant="h5" component="h2">
+                            </Typography>
+                        </CardContent>
+                    </CardActionArea>
+                    <CardActions>
+                        <Button size="small" color="primary">
+                            Share
+        </Button>
+                        <Button size="small" color="primary">
+                            Learn More
+        </Button>
+                    </CardActions>
+                </Card>
+            </Grid>
+            {/* <BeachForecast
+                weather={weather} */}
+
+            {/* <div> */}
+            {/* <Card className='weather'> */}
+            {/* <CardContent>
                 {openWeatherAPI();
                 dailyArray.map() => (
                 <div className="temp">{response.main.temp}</div>
@@ -111,9 +162,10 @@ export default function WeatherCard() {
                 <div className="humidity">{response.main.humidity}</div>
                 )}
             </CardContent> */}
-                </Card>
-            </div>
+            {/* </Card> */}
+            {/* </div> */}
         </div>
+
     );
 
 

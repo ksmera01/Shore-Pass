@@ -16,6 +16,7 @@ import Copyright from '../components/Copyright';
 import DateTime from '../components/DateTime';
 import QRCarousel from '../components/Carousel';
 import BeachForecast from '../components/BeachForecast';
+import WeatherCard from '../components/WeatherCard';
 // import Location from '../components/Location';
 
 const useStyles = makeStyles((theme) => ({
@@ -57,6 +58,7 @@ function Dashboard() {
             API.findUserId(userId)
                 .then(res => {
                     console.log(res.data)
+                    console.log(res.data.tags[0].location)
                     setUser(res.data)
                 })
                 .catch(err => console.log(err));
@@ -110,7 +112,7 @@ function Dashboard() {
                         <Grid item xs={12} align="center">
                             {/* <Location/> */}
                             <h2>Shore Stats</h2>
-                            <BeachForecast/>
+                            <WeatherCard/>
                         </Grid>
                         <Grid item xs={12}>
                             <Paper className={classes.paper} align="center">

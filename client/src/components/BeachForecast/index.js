@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ItemsCarousel from 'react-items-carousel';
-import WeatherCard from '../WeatherCard';
 
 // import user context
 
@@ -8,7 +7,7 @@ export default function BeachForecast() {
     const [activeItemIndex, setActiveItemIndex] = useState(0);
     const chevronWidth = 40;
 
-    const [location, setLocation] = useState({})
+    // const [location, setLocation] = useState({})
 
     return (
         <div style={{ padding: `0 ${chevronWidth}px` }}>
@@ -25,7 +24,7 @@ export default function BeachForecast() {
             >
 
 
-                <div style={{ height: 200 }}><WeatherCard /></div>
+                <div style={{ height: 200 }}>First Card</div>
                 <div style={{ height: 200 }}>Second card</div>
                 <div style={{ height: 200 }}>Third card</div>
                 <div style={{ height: 200 }}>Fourth card</div>

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { TransactionContext } from '../context/TransactionContext';
+import { UserContext } from '../context/UserContext';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -21,7 +23,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
+import Moment from 'react-moment'
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -64,20 +66,11 @@ const StyledTableRow = withStyles((theme) => ({
     },
 }))(TableRow);
 
-function createData(name, status, purchased, expiry) {
-    return { name, status, purchased, expiry };
-}
-
-const rows = [
-    createData('Sea Isle City', 'Valid', 6.0, 24, 4.0),
-    createData('Ocean City', 'Expired', 9.0, 37, 4.3),
-    createData('Brigantine', 'Valid', 16.0, 24, 6.0),
-    createData('Atlantic City', 'Valid', 3.7, 67, 4.3),
-    createData('Stone Harbor', 'Expired', 16.0, 49, 3.9),
-];
-
 export default function myAccount() {
     const classes = useStyles();
+
+    const { user } = useContext(UserContext)
+    console.log(user)
 
     // submitting form function
     // const [signUp, setSignUp] = useState({})
@@ -104,7 +97,7 @@ export default function myAccount() {
         <Container component="main" xs={12} sm={8} md={5} style={{ paddingTop: '100px' }}>
             <Typography component="h1" variant="h5" style={{ textAlign: 'center', paddingBottom: '20px' }}>
                 My Tags
-        </Typography>
+            </Typography>
             <TableContainer component={Paper} xs={12}>
                 <Table className={classes.table} aria-label="customized table">
                     <TableHead>
@@ -116,16 +109,17 @@ export default function myAccount() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <StyledTableRow key={row.name}>
+                        {user.tags && user.tags.map(tag => (
+                            <StyledTableRow key={tag.location}>
                                 <StyledTableCell component="th" scope="row">
-                                    {row.name}
+                                    {tag.location}
                                 </StyledTableCell>
-                                <StyledTableCell align="right">{row.status}</StyledTableCell>
-                                <StyledTableCell align="right">{row.purchased}</StyledTableCell>
-                                <StyledTableCell align="right">{row.expiry}</StyledTableCell>
+                                <StyledTableCell align="right" >{(Date.parse(tag.expirationDate) > Date.now() ? 'Valid' : 'Expired')}</StyledTableCell>
+                                <StyledTableCell align="right"><Moment format='MM/DD/YYYY'>{tag.startDate}</Moment></StyledTableCell>
+                                <StyledTableCell align="right"><Moment format='MM/DD/YYYY'>{tag.expirationDate}</Moment></StyledTableCell>
                             </StyledTableRow>
                         ))}
+                        {console.log(user.tags)}
                     </TableBody>
                 </Table>
             </TableContainer>
@@ -143,9 +137,8 @@ export default function myAccount() {
                                 variant="outlined"
                                 fullWidth
                                 id="firstName"
-                                label="First Name"
                                 autoFocus
-                            // onChange={handleInputChange}
+                                value={user.firstName}
                             />
                         </Grid>
                         <Grid item xs={12} sm={6}>
@@ -153,10 +146,9 @@ export default function myAccount() {
                                 variant="outlined"
                                 fullWidth
                                 id="lastName"
-                                label="Last Name"
                                 name="lastName"
                                 autoComplete="lname"
-                            // onChange={handleInputChange}
+                                value={user.lastName}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -164,9 +156,9 @@ export default function myAccount() {
                                 variant="outlined"
                                 fullWidth
                                 id="email"
-                                label="Email Address"
                                 name="email"
                                 autoComplete="email"
+                                value={user.email}
                             // onChange={handleInputChange}
                             />
                         </Grid>
@@ -179,6 +171,7 @@ export default function myAccount() {
                                 type="password"
                                 id="password"
                                 autoComplete="current-password"
+                                value="{user.password}"
                             // onChange={handleInputChange}
                             />
                         </Grid>

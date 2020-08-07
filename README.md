@@ -13,6 +13,8 @@ QR Code made available instantly for fast access to the shore!
 
 ![TagCode](client/public/tagcode.png)
 
+![VerifiedTag](client/public/RenderedTag.png)
+
 ## Technologies
 
 * React JS

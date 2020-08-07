@@ -15,6 +15,8 @@ QR Code made available instantly for fast access to the shore!
 
 ![VerifiedTag](client/public/RenderedTag.png)
 
+![Account] (client/public/account.png)
+
 ## Technologies
 
 * React JS
@@ -47,7 +49,7 @@ To start the React Application, run npm start
 
 ## Questions
 
-If you have any questions about the repo, open an issue or contact ejlopez44.
+If you have any questions about the repo, open an issue or contact Tito, Kevin, Kait or Taneisha through our GitHub profiles above.
 
 ## Contributors
 Tito Lopez, Kevin Smeraglio, Kait O'Shaughnessy and Taneisha George.

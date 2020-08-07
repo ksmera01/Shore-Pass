@@ -7,11 +7,11 @@ You can view the deployed application here at: https://shore-pass.herokuapp.com/
 
 Shore Pass is the new convenient way to purchase and carry beach tags. 
 
-![ShorePassGif] (client/public/ezgif.com-video-to-gif.gif)
+![ShorePassGif](client/public/ezgif.com-video-to-gif.gif)
 
 QR Code made available instantly for fast access to the shore! 
 
-![TagCode] (client/public/tagcode.png)
+![TagCode](client/public/tagcode.png)
 
 ## Technologies
 

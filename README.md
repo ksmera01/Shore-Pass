@@ -9,7 +9,7 @@ Shore Pass is the new convenient way to purchase and carry beach tags.
 
 ![ShorePassGif] (client/public/ezgif.com-video-to-gif.gif)
 
-QR Code made available instantly for fast access to the shore!
+QR Code made available instantly for fast access to the shore! 
 
 ![TagCode] (client/public/tagcode.png)
 
@@ -47,3 +47,5 @@ To start the React Application, run npm start
 
 If you have any questions about the repo, open an issue or contact ejlopez44.
 
+## Contributors
+Tito Lopez, Kevin Smeraglio, Kait O'Shaughnessy and Taneisha George.

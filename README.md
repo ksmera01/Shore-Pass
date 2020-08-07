@@ -15,7 +15,7 @@ QR Code made available instantly for fast access to the shore!
 
 ![VerifiedTag](client/public/RenderedTag.png)
 
-![Account] (client/public/account.png)
+![Account](client/public/account.png)
 
 ## Technologies
 
